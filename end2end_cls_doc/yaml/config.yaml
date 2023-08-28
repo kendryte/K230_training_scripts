@@ -1,0 +1,26 @@
+dataset:
+  root_folder: ../data/veg_cls #分类数据集路径
+  split: true # 是否重新执行拆分，第一次执行必须为true
+  train_ratio: 0.7 # 训练集比例
+  val_ratio: 0.15 # 验证集比例
+  test_ratio: 0.15 # 测试集比例
+
+train:
+  device: cuda:7
+  txt_path: ../gen # 拆分过程生成的训练集、验证集、测试集txt文件，标签名称文件、校正集文件
+  image_size: [ 224,224 ] # 分辨率
+  mean: [ 0.485, 0.456, 0.406 ]
+  std: [ 0.229, 0.224, 0.225 ]
+  epochs: 10
+  batchsize: 4
+  learningrate: 0.0001
+  save_path: ../checkpoints # 模型保存路径
+
+inference:
+  mode: image # 推理模式，分为image和video; image模式下可推理单张图片和目录下所有图片，video调用摄像头实现推理
+  inference_model: best # 分为best和last，分别调用checkpoints下的best.pth和last.pth进行推理
+  images_path: ../data/veg_cls/bocai # 如果该路径为图片路径，则进行单张图片推理；如果该路径为目录，则对目录下所有图片进行推理
+
+deploy:
+  chip: k230 # 芯片类型，分为“k230”和“cpu”两种
+  ptq_option: 0 # 量化类型，0为uint8，1，2，3，4为uint16的不同形式

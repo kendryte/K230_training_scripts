@@ -1,0 +1,33 @@
+dataset:
+  root_folder: ../data/fruit # 目标检测数据集路径
+  origion_json: labels.json # 目标检测数据集标注json文件
+  split: true # 是否重新执行拆分，第一次执行必须为true
+  val_ratio: 0.1 # 验证集比例
+  test_ratio: 0.1 # 测试集比例
+
+train_val_test:
+  json_dir: ../gen # 拆分过程生成的训练集、验证集、测试集json文件，标签名称文件、校正集文件
+  model_save_dir: ../checkpoints # 模型保存路劲
+  gpu_index: 0 # 调用的gpu索引，如果gpu不可用，会使用cpu
+  img_size: 640 # 分辨率
+  learningrate: 0.001 #学习率
+  mean: [ 0.485, 0.456, 0.406 ] # 图像标准化均值
+  std: [ 0.229, 0.224, 0.225 ] # 图像标准化标准差
+  epochs: 300 # 训练迭代次数
+  pre_train_dir: pre_pth # 预训练模型存放路径
+  train_batch_size: 32 # 训练迭代batch
+  val_batch_size: 8 # 验证迭代batch
+  test_batch_size: 8 # 测试迭代batch
+
+inference:
+  mode: image # 推理模式，分为image和video; image模式下可推理单张图片和目录下所有图片，video调用摄像头实现推理
+  inference_model: best # 分为best和last，分别调用checkpoints下的best.pth和last.pth进行推理
+  image_path: ../data/fruit/test.jpg # 如果该路径为图片路径，则进行单张图片推理；如果该路径为目录，则对目录下所有图片进行推理
+  deploy_json: deploy.json # 后续kmodel需要读取的参数文件
+  confidence_threshold: 0.2 # 检测框阈值
+  nms_threshold: 0.2 # 最大值抑制阈值
+
+deploy:
+  onnx_img_size: [640,640] # 转onnx输入分辨率 [w , h]  必须是32的倍数
+  chip: k230 # 芯片类型，分为“k230”和“cpu”两种
+  ptq_option: 0 # 量化类型，0为uint8，1，2，3，4为uint16的不同形式
