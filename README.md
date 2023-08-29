@@ -4,4 +4,4 @@
 本项目实现了图像分类和目标检测两个任务：
 
 - [图像分类任务以蔬菜分类作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_cls_doc)；
-- [对于目标检测任务以三类水果检测作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_det_doc)；
+- [目标检测任务以三类水果检测作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_det_doc)；

@@ -66,7 +66,10 @@ conda activate myenv
 # 按照项目内的requriements.txt安装训练所用的python库,等待安装
 pip install -r requriements.txt
 ```
+在requriments.txt中会安装模型转换的包nncase和nncase-kpu，`nncase 是一个为 AI 加速器设计的神经网络编译器，参考[nncase](https://github.com/kendryte/nncase)。
+
 ### 安装dotnet
+
 ```shell
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
@@ -139,7 +142,8 @@ python3 inference.py
 ## 使用k230部署模型
 ### 环境准备和镜像编译
 K230 SDK需要在**_Linux环境_**下编译，推荐使用Ubuntu Liunx 20.04。
-使用docker编译环境，下载k230_sdk。
+使用docker编译环境，下载[k230_sdk](https://github.com/kendryte/k230_sdk)。
+
 ```shell
 # 下载sdk
 git clone https://github.com/kendryte/k230_sdk.git
@@ -831,4 +835,6 @@ k230_sdk github：[https://github.com/kendryte/k230_sdk](https://github.com/kend
 k230_sdk_doc github: [k230 sdk 使用说明](https://github.com/kendryte/k230_docs/blob/main/zh/01_software/board/K230_SDK_%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
 k230_sdk gitee: [https://gitee.com/kendryte/k230_sdk](https://gitee.com/kendryte/k230_sdk)
+
+nncase github: [kendryte/nncase: Open deep learning compiler stack for Kendryte AI accelerator (github.com)](https://github.com/kendryte/nncase)
 
