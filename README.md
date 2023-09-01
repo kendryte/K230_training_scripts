@@ -4,4 +4,39 @@
 本项目实现了图像分类和目标检测两个任务：
 
 - [图像分类任务以蔬菜分类作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_cls_doc)；
+
 - [目标检测任务以三类水果检测作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_det_doc)；
+
+  
+
+# K230_SDK和nncase的版本关系
+
+| K230_SDK Tag | nncase&nncase-kpu版本 |
+| ------------ | --------------------- |
+| 0.8          | 2.1.0                 |
+| 0.9          | 2.2.0                 |
+
+在使用过程中，请保证sdk和nncase的版本对应关系。
+
+**K230_SDK拉取命令：**
+
+```
+# clone K230_SDK的0.8版本
+git clone -b v0.8 --single-branch  https://github.com/kendryte/k230_sdk.git
+
+# clone K230_SDK的0.9版本
+git clone -b v0.9 --single-branch  https://github.com/kendryte/k230_sdk.git
+```
+
+**nncase&nncase-kpu安装：**
+
+```
+# 在模型训练环境中
+# 先卸载
+pip uninstall nncase
+pip uninstall nncase-kpu
+# 执行安装
+pip install nncase==2.2.0
+pip install nncase-kpu==2.2.0
+```
+
