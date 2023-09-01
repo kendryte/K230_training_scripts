@@ -21,14 +21,14 @@
 **K230_SDK拉取命令：**
 
 ```
-# clone K230_SDK的0.8版本
+# clone K230_SDK Tag0.8
 git clone -b v0.8 --single-branch  https://github.com/kendryte/k230_sdk.git
 
-# clone K230_SDK的0.9版本
+# clone K230_SDK Tag0.9
 git clone -b v0.9 --single-branch  https://github.com/kendryte/k230_sdk.git
 ```
 
-**nncase&nncase-kpu安装：**
+**nncase&nncase-kpu安装示例：**
 
 ```
 # 在模型训练环境中
