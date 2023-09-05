@@ -15,7 +15,7 @@ from model import YOLOv5
 from utils.read_yaml import read_yaml
 
 
-def image_inference(imgpath,output_img_path,model,device,img_size,anchors,mean,std,confidence_thred,iou_thred,categories):
+def image_inference(imgpath,output_img_path,model,device,img_size,anchors,mean,std,confidence_thred,iou_thred,categories,single_cls):
     """
     :param imgpath: image path
     :param device: gpu device
@@ -74,7 +74,7 @@ def image_inference(imgpath,output_img_path,model,device,img_size,anchors,mean,s
     """
     out = detect(res)
     # NMS
-    out = non_max_suppression(out,confidence_thred,iou_thred,agnostic=True if len(categories)==1 else False)
+    out = non_max_suppression(out,confidence_thred,iou_thred,agnostic=single_cls)
     temp_bbox = scale_coords(img.shape[2:], out[0][:, :4], img0.shape[:2])
     out[0][:, :4] = xyxy2xywh(temp_bbox)
 
@@ -118,6 +118,7 @@ def inference(config):
     img_size = config.get("deploy").get("onnx_img_size",[640,640])
     mean = config.get("train_val_test").get("mean", [0.485, 0.456, 0.406])
     std = config.get("train_val_test").get("std", [0.229, 0.224, 0.225])
+    nms_option = config.get("train_val_test").get("nms_option",False)
     deploy_json_path = os.path.join(json_dir,"deploy.json")
     inference_model = config.get("inference").get("inference_model")
     imgpath = config.get("inference").get("image_path")
@@ -130,6 +131,7 @@ def inference(config):
     num_classes = deploy_dict["num_classes"]
     anchors = deploy_dict["anchors"]
     categories = deploy_dict["categories"]
+    single_cls = (False if num_classes != 1 else True) or nms_option
 
     # device
     if (torch.cuda.is_available()):
@@ -146,7 +148,7 @@ def inference(config):
 
     model = YOLOv5(num_classes=num_classes,version="n",anchors=anchors,test=True)
     model.load_state_dict(torch.load(model_path, map_location=device))
-    image_inference(imgpath,output_img_path,model,device,img_size,anchors,mean,std,confidence_thred,iou_thred,categories)
+    image_inference(imgpath,output_img_path,model,device,img_size,anchors,mean,std,confidence_thred,iou_thred,categories,single_cls)
 
 def get_palette(num_classes):
     coco_palette = [(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),

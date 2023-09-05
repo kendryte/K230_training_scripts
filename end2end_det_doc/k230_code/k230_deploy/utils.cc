@@ -434,6 +434,10 @@ void Utils::parse_args(string config, config_args& args)
             args.obj_thresh = root["confidence_threshold"].asFloat();
         else
             args.obj_thresh = 0;
+        if (root.isMember("nms_option"))
+            args.nms_option = root["nms_option"].asBool();
+        else
+            args.nms_option = false;
         
         for (int i = 0; i < root["categories"].size(); i++) {
             args.labels.push_back(root["categories"][i].asString());

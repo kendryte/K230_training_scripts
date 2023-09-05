@@ -110,6 +110,7 @@ train_val_test:
   mean: [ 0.485, 0.456, 0.406 ] # 图像标准化均值
   std: [ 0.229, 0.224, 0.225 ] # 图像标准化标准差
   epochs: 300 # 训练迭代次数
+  nms_option: false #类内或者类间做nms false代表类内
   pre_train_dir: pre_pth # 预训练模型存放路径
   train_batch_size: 32 # 训练迭代batch
   val_batch_size: 8 # 验证迭代batch

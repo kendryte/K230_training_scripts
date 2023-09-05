@@ -30,6 +30,7 @@
 AnchorBaseDet::AnchorBaseDet(config_args args, const char *kmodel_file, const int debug_mode)
 :ob_det_thresh(args.obj_thresh),ob_nms_thresh(args.nms_thresh),labels(args.labels), AIBase(kmodel_file,"AnchorBaseDet", debug_mode)
 {
+    nms_option = args.nms_option;
     num_class = labels.size();
     memcpy(this->strides, args.strides, sizeof(args.strides));
     memcpy(this->anchors, args.anchors, sizeof(args.anchors));
@@ -43,6 +44,7 @@ AnchorBaseDet::AnchorBaseDet(config_args args, const char *kmodel_file, const in
 AnchorBaseDet::AnchorBaseDet(config_args args, const char *kmodel_file, FrameCHWSize isp_shape, uintptr_t vaddr, uintptr_t paddr,const int debug_mode)
 :ob_det_thresh(args.obj_thresh),ob_nms_thresh(args.nms_thresh),labels(args.labels), AIBase(kmodel_file,"AnchorBaseDet", debug_mode)
 {
+    nms_option = args.nms_option;
     num_class = labels.size();
     memcpy(this->strides, args.strides, sizeof(args.strides));
     memcpy(this->anchors, args.anchors, sizeof(args.anchors));
@@ -94,21 +96,41 @@ void AnchorBaseDet::inference()
 void AnchorBaseDet::post_process(FrameSize frame_size, vector<ob_det_res> &results)
 {
     ScopedTiming st(model_name_ + " post_process", debug_mode_);
-    vector<ob_det_res> box0, box1, box2;
-
+    
     output_0 = p_outputs_[0];
     output_1 = p_outputs_[1];
     output_2 = p_outputs_[2];
 
-    box0 = decode_infer(output_0, frame_size, 0);
-    box1 = decode_infer(output_1, frame_size, 1);
-    box2 = decode_infer(output_2, frame_size, 2);
+    if (nms_option)
+    {
+        vector<ob_det_res> box0, box1, box2;
 
-    results.insert(results.begin(), box0.begin(), box0.end());
-    results.insert(results.begin(), box1.begin(), box1.end());
-    results.insert(results.begin(), box2.begin(), box2.end());
-    
-    nms(results);
+        box0 = decode_infer(output_0, frame_size, 0);
+        box1 = decode_infer(output_1, frame_size, 1);
+        box2 = decode_infer(output_2, frame_size, 2);
+
+        results.insert(results.begin(), box0.begin(), box0.end());
+        results.insert(results.begin(), box1.begin(), box1.end());
+        results.insert(results.begin(), box2.begin(), box2.end());
+        
+        nms(results);
+    }
+    else
+    {
+        vector<vector<ob_det_res>> box0, box1, box2;
+
+        box0 = decode_infer_class(output_0, frame_size, 0);
+        box1 = decode_infer_class(output_1, frame_size, 1);
+        box2 = decode_infer_class(output_2, frame_size, 2);
+
+        for(int i = 0; i < num_class; i++)
+        {
+            box0[i].insert(box0[i].begin(), box1[i].begin(), box1[i].end());
+            box0[i].insert(box0[i].begin(), box2[i].begin(), box2[i].end());
+            nms(box0[i]);
+            results.insert(results.begin(), box0[i].begin(), box0[i].end());
+        }
+    }
 }
 
 vector<ob_det_res> AnchorBaseDet::decode_infer(float* data, FrameSize frame_size, int k)
@@ -155,6 +177,62 @@ vector<ob_det_res> AnchorBaseDet::decode_infer(float* data, FrameSize frame_size
                         box.label_index = cls;
                         box.label = labels[cls];
                         result.push_back(box);
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
+
+vector<vector<ob_det_res>> AnchorBaseDet::decode_infer_class(float* data, FrameSize frame_size, int k)
+{
+    int stride = strides[k];
+    float ratiow = (float)input_width / frame_size.width;
+    float ratioh = (float)input_height / frame_size.height;
+    float gain = ratiow < ratioh ? ratiow : ratioh;
+    std::vector<std::vector<ob_det_res>> result;
+    for (int i = 0; i < num_class; i++)
+    {
+        result.push_back(vector<ob_det_res>());//不断往v2d里加行 
+    }
+    int grid_size_w = input_width / stride;
+    int grid_size_h = input_height / stride;
+    int one_rsize = num_class + 5;
+    float cx, cy, w, h;
+    for (int shift_y = 0; shift_y < grid_size_h; shift_y++)
+    {
+        for (int shift_x = 0; shift_x < grid_size_w; shift_x++)
+        {
+            int loc = shift_x + shift_y * grid_size_w;
+            for (int i = 0; i < 3; i++)
+            {
+                float* record = data + (loc * 3 + i) * one_rsize;
+                float* cls_ptr = record + 5;
+                for (int cls = 0; cls < num_class; cls++)
+                {
+                    float score = (cls_ptr[cls]) * (record[4]);
+                    if (score > ob_det_thresh)
+                    {
+                        cx = ((record[0]) * 2.f - 0.5f + (float)shift_x) * (float)stride;
+                        cy = ((record[1]) * 2.f - 0.5f + (float)shift_y) * (float)stride;
+                        w = pow((record[2]) * 2.f, 2) * anchors[k][i][0];
+                        h = pow((record[3]) * 2.f, 2) * anchors[k][i][1];
+                        cx -= ((input_width - frame_size.width * gain) / 2);
+                        cy -= ((input_height - frame_size.height * gain) / 2);
+                        cx /= gain;
+                        cy /= gain;
+                        w /= gain;
+                        h /= gain;
+                        ob_det_res box;
+                        box.x1 = std::max(0, std::min(int(frame_size.width), int(cx - w / 2.f)));
+                        box.y1 = std::max(0, std::min(int(frame_size.height), int(cy - h / 2.f)));
+                        box.x2 = std::max(0, std::min(int(frame_size.width), int(cx + w / 2.f)));
+                        box.y2 = std::max(0, std::min(int(frame_size.height), int(cy + h / 2.f)));
+                        box.score = score;
+                        box.label_index = cls;
+                        box.label = labels[cls];
+                        result[cls].push_back(box);
                     }
                 }
             }

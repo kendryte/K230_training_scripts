@@ -105,6 +105,15 @@ class AnchorBaseDet : public AIBase
     vector<ob_det_res> decode_infer(float* data, FrameSize frame_size, int k);
 
     /**
+    * @brief 检查结果的初步处理
+    * @param data 模型输出一层的头指针
+    * @param frame_size 原始图像/帧宽高，用于将结果放到原始图像大小
+    * @param k 模型的第k层索引
+    * @return 处理后的检测框集合
+    */
+    vector<vector<ob_det_res>> decode_infer_class(float* data, FrameSize frame_size, int k);
+
+    /**
     * @brief 对检测结果进行非最大值抑制
     * @param input_boxes 检测框集合
     * @return None
@@ -123,6 +132,7 @@ class AnchorBaseDet : public AIBase
     int num_class;         //类别数
 	int strides[STRIDE_NUM]; //每层检测结果的分辨率缩减被数
 	float anchors[3][3][2];  //检测的预设anchor
+    bool nms_option;
 
     int input_height;      //模型输入高
     int input_width;       //模型输入宽

@@ -45,6 +45,7 @@ def pipeline(config):
     mean = train_val_test_config.get("mean", [0.485, 0.456, 0.406])
     std = train_val_test_config.get("std", [0.229, 0.224, 0.225])
     epochs = train_val_test_config.get("epochs",100)
+    nms_option = train_val_test_config.get("nms_option",False)
     train_batch_size = train_val_test_config.get("train_batch_size",32)
     val_batch_size = train_val_test_config.get("val_batch_size",32)
     test_batch_size = train_val_test_config.get("test_batch_size",32)
@@ -55,6 +56,7 @@ def pipeline(config):
     samples_json = os.path.join(json_dir,"samples.json")
     dataset_dir = os.path.join(root_folder,"IMAGES")
     num_classes = len(COCO(os.path.join(root_folder,origion_json)).getCatIds())
+
 
     # to kmodel
     deploy_config = config.get("deploy", {})
@@ -131,14 +133,14 @@ def pipeline(config):
     val_dataset = CocoDataset(ann_file=val_json_path, img_dir=dataset_dir, img_size=img_size)
     val_loader = DataLoader(val_dataset, batch_size=val_batch_size,shuffle=False,collate_fn=lambda x: val_dataset.collate_fn(x, mean=mean,std=std))
     detect_postprocess = YOLOv5Detect(device=device, num_classes=num_classes, anchors=anchors,down_strides=[8, 16, 32]).to(device)
-    single_cls = False if num_classes != 1 else True
+    single_cls = (False if num_classes != 1 else True) or nms_option
     val_dict = {"val_loader":val_loader,"detect_postprocess":detect_postprocess,"device":device,"val_json_path":val_json_path,"single_cls":single_cls,"json_dir":json_dir}
 
     # test
     test_dataset = CocoDataset(ann_file=test_json_path, img_dir=dataset_dir, img_size=img_size)
     test_loader = DataLoader(test_dataset, batch_size=test_batch_size,shuffle=False,collate_fn=lambda x: test_dataset.collate_fn(x, mean=mean,std=std))
     detect_postprocess = YOLOv5Detect(device=device, num_classes=num_classes, anchors=anchors,down_strides=[8, 16, 32]).to(device)
-    single_cls = False if num_classes != 1 else True
+    single_cls = (False if num_classes != 1 else True) or nms_option
     test_dict = {"val_loader":test_loader,"detect_postprocess":detect_postprocess,"device":device,"val_json_path":test_json_path,"single_cls":single_cls,"json_dir":json_dir}
 
     # max map
@@ -203,7 +205,8 @@ def pipeline(config):
         'categories':categories,
         'num_classes':num_classes,
         'nms_threshold':nms_threshold,
-        'confidence_threshold':confidence_threshold
+        'confidence_threshold':confidence_threshold,
+        'nms_option':nms_option
     }
     deploy_json = os.path.join(json_dir, 'deploy.json')
     with open(deploy_json, 'w')as df:

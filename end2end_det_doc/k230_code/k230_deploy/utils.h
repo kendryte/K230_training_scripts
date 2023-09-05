@@ -125,6 +125,7 @@ typedef struct config_args
     float nms_thresh;//非极大值抑制阈值
     float anchors[3][3][2];//预设锚框
     int strides[3];//每个输出分辨率的缩减倍数
+    bool nms_option;
     vector<string> labels;//标签类别名称
 }config_args;
 
