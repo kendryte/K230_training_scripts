@@ -258,7 +258,7 @@ k230_code
   	├──ai_base.h # 模型部署基类，封装了nncase加载、input设置、模型推理、获取output操作，后续具体任务开发只需关注模型的前处理、后处理即可
   	├──anchorbase_det.cc # 目标检测code类实现
   	├──anchorbase_det.h # 目标检测类定义，继承AIBase，用于加载kmodel实现目标检测任务,封装模型推理的前后处理
-  	├──main.cc # 主函数，参数解析，初始化classification类示例，实现上板功能
+  	├──main.cc # 主函数，参数解析，初始化AnchorBaseDet类示例，实现上板功能
   	├──scoped_timing.hpp # 时间测试工具
   	├──utils.cc # 工具类实现 
   	├──utils.h # 工具类, 封装了图像预处理和目标检测任务的常用函数，包括读取二进制文件、保存图片、图像处理、结果绘制等，用户可根据自己需求丰富该文件
@@ -722,24 +722,28 @@ install(TARGETS ${bin} DESTINATION bin): 安装生成的可执行文件到指定
 上述是k230_code/k230_deploy目录下的CMakeLists.txt脚本说明。
 #### k230_code/CMakeLists.txt脚本说明
 ```cmake
-set(src main.cc utils.cc ai_base.cc json.cpp anchorbase_det.cc)
-set(bin main.elf)
+cmake_minimum_required(VERSION 3.2)
+project(nncase_sdk C CXX)
 
-include_directories(${PROJECT_SOURCE_DIR})
-include_directories(${nncase_sdk_root}/riscv64/rvvlib/include)
-include_directories(${k230_sdk}/src/big/mpp/userapps/api/)
-include_directories(${k230_sdk}/src/big/mpp/include)
-include_directories(${k230_sdk}/src/big/mpp/include/comm)
-include_directories(${k230_sdk}/src/big/mpp/userapps/sample/sample_vo)
-link_directories(${nncase_sdk_root}/riscv64/rvvlib/)
+set(nncase_sdk_root "${PROJECT_SOURCE_DIR}/../../nncase/")
+set(k230_sdk ${nncase_sdk_root}/../../../)
+set(CMAKE_EXE_LINKER_FLAGS "-T ${PROJECT_SOURCE_DIR}/cmake/link.lds --static")
 
-add_executable(${bin} ${src})
-target_link_libraries(${bin} -Wl,--start-group rvv Nncase.Runtime.Native nncase.rt_modules.k230 functional_k230 sys vicap vb cam_device cam_engine
- hal oslayer ebase fpga isp_drv binder auto_ctrol common cam_caldb isi 3a buffer_management cameric_drv video_in virtual_hal start_engine cmd_buffer
- switch cameric_reg_drv t_database_c t_mxml_c t_json_c t_common_c vo sensor atomic dma -Wl,--end-group)
+# set opencv
+set(k230_opencv ${k230_sdk}/src/big/utils/lib/opencv)
+include_directories(${k230_opencv}/include/opencv4/)
+link_directories(${k230_opencv}/lib ${k230_opencv}/lib/opencv4/3rdparty)
 
-target_link_libraries(${bin} opencv_imgproc opencv_imgcodecs opencv_core zlib libjpeg-turbo libopenjp2 libpng libtiff libwebp csi_cv)
-install(TARGETS ${bin} DESTINATION bin)
+# set mmz
+link_directories(${k230_sdk}/src/big/mpp/userapps/lib)
+
+# set nncase
+include_directories(${nncase_sdk_root}/riscv64)
+include_directories(${nncase_sdk_root}/riscv64/nncase/include)
+include_directories(${nncase_sdk_root}/riscv64/nncase/include/nncase/runtime)
+link_directories(${nncase_sdk_root}/riscv64/nncase/lib/)
+
+add_subdirectory(k230_deploy)
 ```
 这是k230_code目录下的CMakeLists.txt脚本。该脚本重点关注如下部分
 ```cmake
