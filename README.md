@@ -5,9 +5,11 @@
 
 - [图像分类任务以蔬菜分类作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_cls_doc)；
 
+  BiliBili视频链接：[勘智K230-图像分类教程_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1KG411R79A/?vd_source=f06c64cf853ec01c8ee44cf119abc7f0)
+
 - [目标检测任务以三类水果检测作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_det_doc)；
 
-  
+  BiliBili视频链接：[认准那个小目标：保姆级演示使用勘智K230部署目标检测算法_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV18u41137sN/?vd_source=f06c64cf853ec01c8ee44cf119abc7f0)
 
 # K230_SDK和nncase的版本关系
 
