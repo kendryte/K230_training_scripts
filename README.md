@@ -17,6 +17,7 @@
 | ------------ | --------------------- |
 | 0.8          | 2.1.0                 |
 | 0.9          | 2.2.0                 |
+| 1.0          | 2.3.0                 |
 
 在使用过程中，请保证sdk和nncase的版本对应关系。
 
@@ -28,6 +29,10 @@ git clone -b v0.8 --single-branch  https://github.com/kendryte/k230_sdk.git
 
 # clone K230_SDK Tag0.9
 git clone -b v0.9 --single-branch  https://github.com/kendryte/k230_sdk.git
+
+# clone K230_SDK Tag1.0
+git clone -b v1.0 --single-branch  https://github.com/kendryte/k230_sdk.git
+
 ```
 
 **nncase&nncase-kpu安装示例：**
