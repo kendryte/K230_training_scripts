@@ -195,12 +195,8 @@ def pipeline(config):
     cat_id = coco_data.getCatIds()
     cats = coco_data.loadCats(cat_id)
     categories = [cat['name'] for cat in cats]
-    anchors_onnx = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
-    for i in range(len(anchors)):
-        for j in range(len(anchors[i])):
-            anchors_onnx[i][j] = int(anchors[i][j]/img_size*onnx_img_size[j%2])
     deploy_dict = {
-        'anchors': anchors_onnx,
+        'anchors': anchors,
         'onnx_img_size':onnx_img_size,
         'categories':categories,
         'num_classes':num_classes,
