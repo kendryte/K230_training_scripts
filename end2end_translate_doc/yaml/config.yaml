@@ -1,0 +1,30 @@
+dataset:
+  root_folder: ../data/TranslateData # 翻译数据集路径
+  src_file: corpus.en #被翻译语言数据集文件名 utf-8编码
+  tag_file: corpus.ch #翻译目标数据集文件名 utf-8编码
+  src_vocab_size: 8000 #被翻译语言自定义词典大小 eg. 8000 16000 32000
+  tag_vocab_size: 8000 #翻译目标语言自定义词典大小 eg. 8000 16000 32000
+  src_character_coverage: 1 #被翻译语言字符覆盖量  对于字符集丰富的语言(如日语或中文)为0.9995，对于其他字符集较小的语言为1.0。
+  tag_character_coverage: 0.9995 #翻译目标语言字符覆盖量   对于字符集丰富的语言(如日语或中文)为0.9995，对于其他字符集较小的语言为1.0。
+  split: true # 是否重新执行拆分，第一次执行必须为true
+  val_ratio: 0 # 验证集比例 (如果数据集比较小设置为0 不建议设置大于0的数)
+  test_ratio: 0 # 测试集比例 (如果数据集比较小设置为0 不建议设置大于0的数)
+
+train_val_test:
+  gen_dir: ../gen # 拆分过程生成的训练集、验证集、测试集文件，校正集文件
+  model_save_dir: ../checkpoints # 模型保存路径
+  gpu_index: 0 # 调用的gpu索引，如果gpu不可用，会使用cpu
+  maxlen: 50 # 最大token长度
+  learningrate: 0.0001 #学习率
+  epochs: 50 # 训练迭代次数
+  train_batch_size: 32 # 训练迭代batch
+  val_batch_size: 8 # 验证迭代batch
+  test_batch_size: 8 # 测试迭代batch
+
+inference:
+  inference_model: best # 分为best和last，分别调用checkpoints下的best.pth和last.pth进行推理
+  src_sentence: "I miss you." # 被翻译语言句子
+
+deploy:
+  chip: k230 # 芯片类型，分为“k230”和“cpu”两种
+  ptq_option: 0 # 量化类型，0为uint8，1，2，3，4为uint16的不同形式

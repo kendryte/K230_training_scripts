@@ -136,23 +136,45 @@ python3 inference.py
 ```
 ## 使用k230部署模型
 ### 环境准备和镜像编译
+
+**注意：训练环境中nncase和nncase-kpu的版本和SDK的版本要对应，nncase和nncase-kpu版本为2.3.0，SDK版本为1.0.1。**
+
 K230 SDK需要在**_Linux环境_**下编译，推荐使用Ubuntu Liunx 20.04。
 使用docker编译环境，下载[k230_sdk](https://github.com/kendryte/k230_sdk)。
 
 ```shell
-# 下载sdk
-git clone https://github.com/kendryte/k230_sdk.git
-cd k230_sdk
-# 下载工具链
-source tools/get_download_url.sh && make prepare_sourcecode
-# 下载官方镜像
+# 下载docker编译镜像
 docker pull ghcr.io/kendryte/k230_sdk
+# 可以使用以下命令确认docker镜像拉取成功
+docker images | grep k230_sdk
+# 下载sdk
+git clone -b v1.0.1 --single-branch https://github.com/kendryte/k230_sdk.git
+cd k230_sdk
+# 下载工具链，make prepare_sourcecode 会自动下载Linux和RT-Smart toolchain, buildroot package, AI package等. 请确保该命令执行成功并没有Error产生，下载时间和速度以实际网速为准。
+make prepare_sourcecode
 # 创建docker容器，$(pwd):$(pwd)表示系统当前目录映射到docker容器内部的相同目录下，将系统下的工具链目录映射到docker容器内部的/opt/toolchain目录下
 docker run -u root -it -v $(pwd):$(pwd) -v $(pwd)/toolchain:/opt/toolchain -w $(pwd) ghcr.io/kendryte/k230_sdk /bin/bash
-# 在docker中编译镜像，请耐心等待完成
-make
 ```
+K230现有两种开发板，分别为CANMV-K230-V1.0（以下简称CANMV-K230）和K230-USIP-LP3-EVB（以下简称K230-EVB）。两种开发板区别如图：
+
+![canmv开发板和evb开发板](./resource/canmv_and_evb.jpg)
+
+```shell
+# 在docker中编译镜像，请耐心等待完成，不同类型开发板编译命令不同
+# 如果是CANMV-K230开发板
+make CONF=k230_canmv_defconfig
+# 如果是K230-EVB开发板
+make CONF=k230_evb_defconfig
+```
+
+SD卡镜像也可在嘉楠开发者社区下载：
+
+[canmv-k230开发板1.0.1版本SD卡镜像](https://kendryte-download.canaan-creative.com/developer/k230/k230_canmv_sysimage-sdcard_V1.0.1.img.gz)
+
+[k230-evb开发板1.0.1版本SD卡镜像](https://kendryte-download.canaan-creative.com/developer/k230/k230_evb_sysimage-sdcard_V1.0.1.img.gz)
+
 ### 镜像烧录
+
 编译结束后在output/k230_evb_defconfig/images目录下可以找到编译好的镜像文件：
 ```
 k230_evb_defconfig/images
@@ -182,7 +204,27 @@ sudo dd if=sysimage-sdcard.img of=/dev/sdx bs=1M oflag=sync
 其它更详细的烧录方法，请参考[K230_SDK_使用说明](https://github.com/kendryte/k230_docs/blob/main/zh/01_software/board/K230_SDK_%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)。
 
 ### 上电启动K230 EVB开发板
-确认启动开关选择在SD卡启动模式下，将烧录完成的TF卡插入进开板板卡槽中，然后将电源开关K1拔到ON位置，系统可上电。如果您有接好串口，可在串口中看到启动日志输出。 **系统上电后，默认会有二个串口设备，可分别访问小核Linux和大核RTSmart** 大核RTSmart系统中会开机会自动启动一个应用程序，可按q键退出至命令提示符终端。
+#### K230-EVB开发板上电启动
+
+K230 EVB支持SDCard、eMMC、norflash等多种启动方式，用户可以通过改变开板上启动拔码开关的设置，来切换不同启动模式。 为方便开发，建议您准备一张TF卡，并将**拔码开关切换至SD卡启动模式**，后续可考虑将镜像文件固化至emmc中。
+
+1. 请先**确认启动开关SW1选择在SD卡启动模式**下（详情可参考[开机上电方式](https://github.com/kendryte/k230_docs/blob/main/zh/00_hardware/K230_DEMO_BOARD资源使用指南.md#电源区开机上电方式)）
+2. 将烧录完成的TF卡插入开发板TF卡槽中
+3. 开发板接上电源
+4. **将电源开关K1拔到ON位置**，系统可上电启动
+5. 如果您有接好串口，可在串口中看到启动日志输出。
+
+#### CanMV-K230开发板上电启动
+
+K230 CanMV-K230开发板支持SDCard启动方式、HDMI输出显示，因此，需要准备一张TF卡，此外建议准备一个HDMI显示器。
+
+1. 将烧录完成的TF卡插入开发板TF卡槽中
+2. 开发板上电，此时，系统可上电启动
+
+系统上电后，默认会有**两个串口设备**，可分别用于访问小核Linux和大核RTSmart
+
+小核Linux默认用户名root，密码为空。大核RTSmart系统中开机会自动启动一个应用程序，可按`q`键退出至命令提示符终端。
+
 ### PC和k230文件传输配置与实现
 #### windows系统
 （1）Tftpd64安装，在[https://bitbucket.org/phjounin/tftpd64/downloads/](https://bitbucket.org/phjounin/tftpd64/downloads/)下载。
@@ -541,11 +583,8 @@ void image_proc_cls(string &kmodel_path, string &image_path,vector<string> label
     cv::Mat ori_img = cv::imread(image_path);
     int ori_w = ori_img.cols;
     int ori_h = ori_img.rows;
-
     Classification cls(kmodel_path,image_path,labels,cls_thresh,debug_mode);
-
     cls.pre_process(ori_img);
-
     cls.inference();
     vector<cls_res> results;
     cls.post_process(results);
@@ -689,10 +728,12 @@ void video_proc_cls(string &kmodel_path, string &image_path,vector<string> label
 
 #### k230_code/k230_deploy/CMakeLists.txt脚本说明
 ```cmake
-set(src main.cc utils.cc ai_base.cc classification.cc) 
+set(src main.cc utils.cc ai_base.cc classification.cc)
 set(bin main.elf)
 
 include_directories(${PROJECT_SOURCE_DIR})
+include_directories(.)
+
 include_directories(${nncase_sdk_root}/riscv64/rvvlib/include)
 include_directories(${k230_sdk}/src/big/mpp/userapps/api/)
 include_directories(${k230_sdk}/src/big/mpp/include)
@@ -703,7 +744,7 @@ link_directories(${nncase_sdk_root}/riscv64/rvvlib/)
 add_executable(${bin} ${src})
 target_link_libraries(${bin} -Wl,--start-group rvv Nncase.Runtime.Native nncase.rt_modules.k230 functional_k230 sys vicap vb cam_device cam_engine
  hal oslayer ebase fpga isp_drv binder auto_ctrol common cam_caldb isi 3a buffer_management cameric_drv video_in virtual_hal start_engine cmd_buffer
- switch cameric_reg_drv t_database_c t_mxml_c t_json_c t_common_c vo sensor atomic dma -Wl,--end-group)
+ switch cameric_reg_drv t_database_c t_mxml_c t_json_c t_common_c vo connector sensor atomic dma -Wl,--end-group)
 
 target_link_libraries(${bin} opencv_imgproc opencv_imgcodecs opencv_core zlib libjpeg-turbo libopenjp2 libpng libtiff libwebp csi_cv)
 install(TARGETS ${bin} DESTINATION bin)
@@ -794,11 +835,33 @@ if [ -f out/bin/main.elf ]; then
 fi
 ```
 ### AI代码编译
-将项目中的k230_code文件夹拷贝到k230_sdk目录下的src/big/nncase下，执行编译脚本，将C++代码编译成main.elf可执行文件。
+将项目中的k230_code文件夹拷贝到k230_sdk目录下的src/big/nncase下，执行编译脚本，将C++代码编译成main.elf可执行文件。K230现有两种开发板，两种开发板编译命令不同，请注意区分。
+
+#### CANMV-K230开发板
+
+如果编译可以在CANMV-K230开发板执行的elf文件：
+
 ```shell
+# 在k230_SDK目录下执行
+make CONF=k230_canmv_defconfig prepare_memory
+# 回到当前项目目录下
 ./build_app.sh
 ```
+#### K230-EVB开发板
+
+如果编译可以在K230-EVB开发板执行的elf文件：
+
+```shell
+# 在k230_SDK目录下执行
+make CONF=k230_evb_defconfig prepare_memory
+# 回到当前项目目录下
+./build_app.sh
+```
+
+
+
 若权限不够，可使用如下代码赋予相关权限：
+
 ```shell
 chmod +x build_app.sh
 ./build_app.sh
@@ -839,6 +902,10 @@ main.elf best.kmodel None labels.txt 2
 局域网文件传输工具Tftpd64：[https://bitbucket.org/phjounin/tftpd64/downloads/](https://bitbucket.org/phjounin/tftpd64/downloads/)
 
 MobaXterm下载地址：[https://mobaxterm.mobatek.net/download.html](https://mobaxterm.mobatek.net/download.html)
+
+CANMV-K230开发板1.0.1SD卡镜像下载：https://kendryte-download.canaan-creative.com/developer/k230/k230_canmv_sysimage-sdcard_V1.0.1.img.gz
+
+K230-EVB开发板1.0.1SD卡镜像下载：https://kendryte-download.canaan-creative.com/developer/k230/k230_evb_sysimage-sdcard_V1.0.1.img.gz
 
 ## 参考
 k230_sdk github：[https://github.com/kendryte/k230_sdk](https://github.com/kendryte/k230_sdk)

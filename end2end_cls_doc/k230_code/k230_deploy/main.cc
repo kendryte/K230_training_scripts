@@ -158,8 +158,6 @@ void video_proc_cls(string &kmodel_path, string &image_path,vector<string> label
         {
             ScopedTiming st("osd draw", debug_mode);
             Utils::draw_cls_res(osd_frame, results, {osd_width, osd_height}, {SENSOR_WIDTH, SENSOR_HEIGHT});
-            cv::flip(osd_frame, osd_frame_tmp, 0);
-            cv::flip(osd_frame_tmp, osd_frame, 1);
         }
 
 

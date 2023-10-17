@@ -13,6 +13,7 @@ link_directories(${k230_opencv}/lib ${k230_opencv}/lib/opencv4/3rdparty)
 # set mmz
 link_directories(${k230_sdk}/src/big/mpp/userapps/lib)
 
+
 # set nncase
 include_directories(${nncase_sdk_root}/riscv64)
 include_directories(${nncase_sdk_root}/riscv64/nncase/include)

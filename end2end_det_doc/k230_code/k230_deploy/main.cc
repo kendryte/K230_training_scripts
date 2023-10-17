@@ -133,8 +133,6 @@ void video_proc_ob_det(config_args args, char *argv[])
         {
             ScopedTiming st("osd draw", atoi(argv[4]));
             Utils::draw_ob_det_res(osd_frame, results, {osd_width, osd_height}, {SENSOR_WIDTH, SENSOR_HEIGHT});
-            cv::flip(osd_frame, osd_frame_tmp, 0);
-            cv::flip(osd_frame_tmp, osd_frame, 1);
         }
 
 
