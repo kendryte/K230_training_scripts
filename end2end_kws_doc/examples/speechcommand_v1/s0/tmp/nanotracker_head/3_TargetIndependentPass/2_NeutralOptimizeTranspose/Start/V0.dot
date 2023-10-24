@@ -1,0 +1,1288 @@
+digraph
+{
+    compound = true
+
+    subgraph "cluster 2"
+    {
+        label = 2
+        labeljust = l
+        style = dotted
+
+        "2dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"0\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[2] : {-0.04762167f,-0.13678734f}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 11"
+    {
+        label = 11
+        labeljust = l
+        style = dotted
+
+        "11dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"1\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="blueviolet">Var cache</font></td></tr><tr><td>f32[1,256,105]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 12"
+    {
+        label = 12
+        labeljust = l
+        style = dotted
+
+        "12dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"2\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {49L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 13"
+    {
+        label = 13
+        labeljust = l
+        style = dotted
+
+        "13dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"3\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {105L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 14"
+    {
+        label = 14
+        labeljust = l
+        style = dotted
+
+        "14dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"4\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {2L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 15"
+    {
+        label = 15
+        labeljust = l
+        style = dotted
+
+        "15dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"5\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 16"
+    {
+        label = 16
+        labeljust = l
+        style = dotted
+
+        "16dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"6\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">11</td><td port="P2">12</td><td port="P3">13</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,56]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 17"
+    {
+        label = 17
+        labeljust = l
+        style = dotted
+
+        "17dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"7\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {21L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 18"
+    {
+        label = 18
+        labeljust = l
+        style = dotted
+
+        "18dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"8\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">11</td><td port="P2">17</td><td port="P3">12</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,28]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 19"
+    {
+        label = 19
+        labeljust = l
+        style = dotted
+
+        "19dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"9\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {7L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 20"
+    {
+        label = 20
+        labeljust = l
+        style = dotted
+
+        "20dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"10\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">11</td><td port="P2">19</td><td port="P3">17</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,14]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 21"
+    {
+        label = 21
+        labeljust = l
+        style = dotted
+
+        "21dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"11\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {0L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 22"
+    {
+        label = 22
+        labeljust = l
+        style = dotted
+
+        "22dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"12\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">11</td><td port="P2">21</td><td port="P3">19</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,7]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 23"
+    {
+        label = 23
+        labeljust = l
+        style = dotted
+
+        "23dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"13\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 24"
+    {
+        label = 24
+        labeljust = l
+        style = dotted
+
+        "24dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"14\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="blueviolet">Var input</font></td></tr><tr><td>f32[1,30,40]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 25"
+    {
+        label = 25
+        labeljust = l
+        style = dotted
+
+        "25dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"15\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[40,256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 26"
+    {
+        label = 26
+        labeljust = l
+        style = dotted
+
+        "26dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"16\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(3) MatMul</td><td port="P1">24</td><td port="P2">25</td></tr><tr><td>f32[1,30,256]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 27"
+    {
+        label = 27
+        labeljust = l
+        style = dotted
+
+        "27dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"17\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">23</td><td port="P2">26</td></tr><tr><td>f32[1,30,256]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 28"
+    {
+        label = 28
+        labeljust = l
+        style = dotted
+
+        "28dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"18\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">27</td></tr><tr><td>f32[1,30,256]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 29"
+    {
+        label = 29
+        labeljust = l
+        style = dotted
+
+        "29dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"19\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[3] : {0L,2L,1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 30"
+    {
+        label = 30
+        labeljust = l
+        style = dotted
+
+        "30dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"20\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(4) Transpose</td><td port="P1">28</td><td port="P2">29</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 31"
+    {
+        label = 31
+        labeljust = l
+        style = dotted
+
+        "31dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"21\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">22</td><td port="P1">30</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 32"
+    {
+        label = 32
+        labeljust = l
+        style = dotted
+
+        "32dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"22\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64 : 2</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 33"
+    {
+        label = 33
+        labeljust = l
+        style = dotted
+
+        "33dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"23\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(9) Concat</td><td port="P1">31</td><td port="P2">32</td></tr><tr><td>f32[1,256,37]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 34"
+    {
+        label = 34
+        labeljust = l
+        style = dotted
+
+        "34dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"24\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i32[1] : {3}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 35"
+    {
+        label = 35
+        labeljust = l
+        style = dotted
+
+        "35dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"25\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">33</td><td port="P2">34</td></tr><tr><td>f32[1,256,37,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 36"
+    {
+        label = 36
+        labeljust = l
+        style = dotted
+
+        "36dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"26\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,1,8,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 37"
+    {
+        label = 37
+        labeljust = l
+        style = dotted
+
+        "37dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"27\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 38"
+    {
+        label = 38
+        labeljust = l
+        style = dotted
+
+        "38dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"28\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[2] : {1L,1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 39"
+    {
+        label = 39
+        labeljust = l
+        style = dotted
+
+        "39dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"29\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[2,2] : {{0L,0L},{0L,0L}}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 40"
+    {
+        label = 40
+        labeljust = l
+        style = dotted
+
+        "40dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"30\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64 : 256</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 41"
+    {
+        label = 41
+        labeljust = l
+        style = dotted
+
+        "41dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"31\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[2] : {-Infinityf,Infinityf}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 42"
+    {
+        label = 42
+        labeljust = l
+        style = dotted
+
+        "42dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"32\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">35</td><td port="P2">36</td><td port="P3">37</td><td port="P4">38</td><td port="P5">39</td><td port="P6">38</td><td port="P7">40</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 43"
+    {
+        label = 43
+        labeljust = l
+        style = dotted
+
+        "43dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"33\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">42</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 44"
+    {
+        label = 44
+        labeljust = l
+        style = dotted
+
+        "44dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"34\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">43</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 45"
+    {
+        label = 45
+        labeljust = l
+        style = dotted
+
+        "45dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"35\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">44</td><td port="P2">34</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 46"
+    {
+        label = 46
+        labeljust = l
+        style = dotted
+
+        "46dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"36\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,256,1,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 47"
+    {
+        label = 47
+        labeljust = l
+        style = dotted
+
+        "47dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"37\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 48"
+    {
+        label = 48
+        labeljust = l
+        style = dotted
+
+        "48dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"38\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64 : 1</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 49"
+    {
+        label = 49
+        labeljust = l
+        style = dotted
+
+        "49dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"39\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">45</td><td port="P2">46</td><td port="P3">47</td><td port="P4">38</td><td port="P5">39</td><td port="P6">38</td><td port="P7">48</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 50"
+    {
+        label = 50
+        labeljust = l
+        style = dotted
+
+        "50dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"40\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">49</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 51"
+    {
+        label = 51
+        labeljust = l
+        style = dotted
+
+        "51dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"41\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">50</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 52"
+    {
+        label = 52
+        labeljust = l
+        style = dotted
+
+        "52dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"42\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">51</td><td port="P2">30</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 53"
+    {
+        label = 53
+        labeljust = l
+        style = dotted
+
+        "53dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"43\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">20</td><td port="P1">52</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 54"
+    {
+        label = 54
+        labeljust = l
+        style = dotted
+
+        "54dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"44\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(9) Concat</td><td port="P1">53</td><td port="P2">32</td></tr><tr><td>f32[1,256,44]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 55"
+    {
+        label = 55
+        labeljust = l
+        style = dotted
+
+        "55dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"45\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">54</td><td port="P2">34</td></tr><tr><td>f32[1,256,44,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 56"
+    {
+        label = 56
+        labeljust = l
+        style = dotted
+
+        "56dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"46\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,1,8,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 57"
+    {
+        label = 57
+        labeljust = l
+        style = dotted
+
+        "57dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"47\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 58"
+    {
+        label = 58
+        labeljust = l
+        style = dotted
+
+        "58dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"48\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[2] : {2L,1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 59"
+    {
+        label = 59
+        labeljust = l
+        style = dotted
+
+        "59dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"49\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">55</td><td port="P2">56</td><td port="P3">57</td><td port="P4">38</td><td port="P5">39</td><td port="P6">58</td><td port="P7">40</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 60"
+    {
+        label = 60
+        labeljust = l
+        style = dotted
+
+        "60dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"50\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">59</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 61"
+    {
+        label = 61
+        labeljust = l
+        style = dotted
+
+        "61dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"51\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">60</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 62"
+    {
+        label = 62
+        labeljust = l
+        style = dotted
+
+        "62dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"52\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">61</td><td port="P2">34</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 63"
+    {
+        label = 63
+        labeljust = l
+        style = dotted
+
+        "63dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"53\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,256,1,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 64"
+    {
+        label = 64
+        labeljust = l
+        style = dotted
+
+        "64dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"54\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 65"
+    {
+        label = 65
+        labeljust = l
+        style = dotted
+
+        "65dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"55\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">62</td><td port="P2">63</td><td port="P3">64</td><td port="P4">38</td><td port="P5">39</td><td port="P6">38</td><td port="P7">48</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 66"
+    {
+        label = 66
+        labeljust = l
+        style = dotted
+
+        "66dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"56\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">65</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 67"
+    {
+        label = 67
+        labeljust = l
+        style = dotted
+
+        "67dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"57\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">66</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 68"
+    {
+        label = 68
+        labeljust = l
+        style = dotted
+
+        "68dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"58\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">67</td><td port="P2">52</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 69"
+    {
+        label = 69
+        labeljust = l
+        style = dotted
+
+        "69dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"59\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">18</td><td port="P1">68</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 70"
+    {
+        label = 70
+        labeljust = l
+        style = dotted
+
+        "70dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"60\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(9) Concat</td><td port="P1">69</td><td port="P2">32</td></tr><tr><td>f32[1,256,58]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 71"
+    {
+        label = 71
+        labeljust = l
+        style = dotted
+
+        "71dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"61\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">70</td><td port="P2">34</td></tr><tr><td>f32[1,256,58,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 72"
+    {
+        label = 72
+        labeljust = l
+        style = dotted
+
+        "72dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"62\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,1,8,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 73"
+    {
+        label = 73
+        labeljust = l
+        style = dotted
+
+        "73dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"63\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 74"
+    {
+        label = 74
+        labeljust = l
+        style = dotted
+
+        "74dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"64\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[2] : {4L,1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 75"
+    {
+        label = 75
+        labeljust = l
+        style = dotted
+
+        "75dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"65\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">71</td><td port="P2">72</td><td port="P3">73</td><td port="P4">38</td><td port="P5">39</td><td port="P6">74</td><td port="P7">40</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 76"
+    {
+        label = 76
+        labeljust = l
+        style = dotted
+
+        "76dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"66\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">75</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 77"
+    {
+        label = 77
+        labeljust = l
+        style = dotted
+
+        "77dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"67\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">76</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 78"
+    {
+        label = 78
+        labeljust = l
+        style = dotted
+
+        "78dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"68\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">77</td><td port="P2">34</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 79"
+    {
+        label = 79
+        labeljust = l
+        style = dotted
+
+        "79dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"69\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,256,1,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 80"
+    {
+        label = 80
+        labeljust = l
+        style = dotted
+
+        "80dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"70\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 81"
+    {
+        label = 81
+        labeljust = l
+        style = dotted
+
+        "81dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"71\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">78</td><td port="P2">79</td><td port="P3">80</td><td port="P4">38</td><td port="P5">39</td><td port="P6">38</td><td port="P7">48</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 82"
+    {
+        label = 82
+        labeljust = l
+        style = dotted
+
+        "82dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"72\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">81</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 83"
+    {
+        label = 83
+        labeljust = l
+        style = dotted
+
+        "83dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"73\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">82</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 84"
+    {
+        label = 84
+        labeljust = l
+        style = dotted
+
+        "84dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"74\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">83</td><td port="P2">68</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 85"
+    {
+        label = 85
+        labeljust = l
+        style = dotted
+
+        "85dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"75\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">16</td><td port="P1">84</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 86"
+    {
+        label = 86
+        labeljust = l
+        style = dotted
+
+        "86dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"76\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(9) Concat</td><td port="P1">85</td><td port="P2">32</td></tr><tr><td>f32[1,256,86]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 87"
+    {
+        label = 87
+        labeljust = l
+        style = dotted
+
+        "87dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"77\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">86</td><td port="P2">34</td></tr><tr><td>f32[1,256,86,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 88"
+    {
+        label = 88
+        labeljust = l
+        style = dotted
+
+        "88dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"78\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,1,8,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 89"
+    {
+        label = 89
+        labeljust = l
+        style = dotted
+
+        "89dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"79\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 90"
+    {
+        label = 90
+        labeljust = l
+        style = dotted
+
+        "90dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"80\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[2] : {8L,1L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 91"
+    {
+        label = 91
+        labeljust = l
+        style = dotted
+
+        "91dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"81\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">87</td><td port="P2">88</td><td port="P3">89</td><td port="P4">38</td><td port="P5">39</td><td port="P6">90</td><td port="P7">40</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 92"
+    {
+        label = 92
+        labeljust = l
+        style = dotted
+
+        "92dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"82\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">91</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 93"
+    {
+        label = 93
+        labeljust = l
+        style = dotted
+
+        "93dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"83\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">92</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 94"
+    {
+        label = 94
+        labeljust = l
+        style = dotted
+
+        "94dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"84\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(8) Unsqueeze</td><td port="P1">93</td><td port="P2">34</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 95"
+    {
+        label = 95
+        labeljust = l
+        style = dotted
+
+        "95dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"85\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,256,1,1]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 96"
+    {
+        label = 96
+        labeljust = l
+        style = dotted
+
+        "96dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"86\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 97"
+    {
+        label = 97
+        labeljust = l
+        style = dotted
+
+        "97dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"87\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(7) Conv2D</td><td port="P1">94</td><td port="P2">95</td><td port="P3">96</td><td port="P4">38</td><td port="P5">39</td><td port="P6">38</td><td port="P7">48</td><td port="P8">41</td></tr><tr><td>f32[1,256,30,1]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 98"
+    {
+        label = 98
+        labeljust = l
+        style = dotted
+
+        "98dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"88\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(6) Squeeze</td><td port="P1">97</td><td port="P2">34</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 99"
+    {
+        label = 99
+        labeljust = l
+        style = dotted
+
+        "99dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"89\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(5) Relu</td><td port="P1">98</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 100"
+    {
+        label = 100
+        labeljust = l
+        style = dotted
+
+        "100dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"90\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">99</td><td port="P2">84</td></tr><tr><td>f32[1,256,30]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 101"
+    {
+        label = 101
+        labeljust = l
+        style = dotted
+
+        "101dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"91\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(4) Transpose</td><td port="P1">100</td><td port="P2">29</td></tr><tr><td>f32[1,30,256]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 102"
+    {
+        label = 102
+        labeljust = l
+        style = dotted
+
+        "102dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"92\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">f32[256,2]</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 103"
+    {
+        label = 103
+        labeljust = l
+        style = dotted
+
+        "103dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"93\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(3) MatMul</td><td port="P1">101</td><td port="P2">102</td></tr><tr><td>f32[1,30,2]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 104"
+    {
+        label = 104
+        labeljust = l
+        style = dotted
+
+        "104dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"94\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(1) Add</td><td port="P1">2</td><td port="P2">103</td></tr><tr><td>f32[1,30,2]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 105"
+    {
+        label = 105
+        labeljust = l
+        style = dotted
+
+        "105dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"95\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(0) Sigmoid</td><td port="P1">104</td></tr><tr><td>f32[1,30,2]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 106"
+    {
+        label = 106
+        labeljust = l
+        style = dotted
+
+        "106dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"96\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {-7L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 107"
+    {
+        label = 107
+        labeljust = l
+        style = dotted
+
+        "107dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"97\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {9223372036854775807L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 108"
+    {
+        label = 108
+        labeljust = l
+        style = dotted
+
+        "108dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"98\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">33</td><td port="P2">106</td><td port="P3">107</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,7]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 109"
+    {
+        label = 109
+        labeljust = l
+        style = dotted
+
+        "109dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"99\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {-14L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 110"
+    {
+        label = 110
+        labeljust = l
+        style = dotted
+
+        "110dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"100\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">54</td><td port="P2">109</td><td port="P3">107</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,14]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 111"
+    {
+        label = 111
+        labeljust = l
+        style = dotted
+
+        "111dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"101\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {-28L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 112"
+    {
+        label = 112
+        labeljust = l
+        style = dotted
+
+        "112dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"102\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">70</td><td port="P2">111</td><td port="P3">107</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,28]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 113"
+    {
+        label = 113
+        labeljust = l
+        style = dotted
+
+        "113dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"103\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkorange">i64[1] : {-56L}</font></td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 114"
+    {
+        label = 114
+        labeljust = l
+        style = dotted
+
+        "114dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"104\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(10) Slice</td><td port="P1">86</td><td port="P2">113</td><td port="P3">107</td><td port="P4">14</td><td port="P5">15</td></tr><tr><td>f32[1,256,56]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 115"
+    {
+        label = 115
+        labeljust = l
+        style = dotted
+
+        "115dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"105\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">108</td><td port="P1">110</td><td port="P2">112</td><td port="P3">114</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 116"
+    {
+        label = 116
+        labeljust = l
+        style = dotted
+
+        "116dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"106\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font color="darkblue">Call</font></td><td port="P0">(9) Concat</td><td port="P1">115</td><td port="P2">32</td></tr><tr><td>f32[1,256,105]</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 117"
+    {
+        label = 117
+        labeljust = l
+        style = dotted
+
+        "117dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"107\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Tuple</font></td><td port="P0">105</td><td port="P1">116</td></tr></table>>, shape = plain ]
+    }
+
+    subgraph "cluster 118"
+    {
+        label = 118
+        labeljust = l
+        style = dotted
+
+        "118dummy" [ height = 0, label = "", style = invis, width = 0 ]
+        "\"108\"" [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td><font>Function main</font></td><td port="P0">117</td><td port="P1">24</td><td port="P2">11</td></tr><tr><td>(f32[1,30,40], f32[1,256,105]) -&gt; (f32[1,30,2], f32[1,256,105])</td></tr></table>>, shape = plain ]
+    }
+
+    "11dummy" -> "\"6\"":P1 [ ltail = "cluster 11" ]
+    "12dummy" -> "\"6\"":P2 [ ltail = "cluster 12" ]
+    "13dummy" -> "\"6\"":P3 [ ltail = "cluster 13" ]
+    "14dummy" -> "\"6\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"6\"":P5 [ ltail = "cluster 15" ]
+    "11dummy" -> "\"8\"":P1 [ ltail = "cluster 11" ]
+    "17dummy" -> "\"8\"":P2 [ ltail = "cluster 17" ]
+    "12dummy" -> "\"8\"":P3 [ ltail = "cluster 12" ]
+    "14dummy" -> "\"8\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"8\"":P5 [ ltail = "cluster 15" ]
+    "11dummy" -> "\"10\"":P1 [ ltail = "cluster 11" ]
+    "19dummy" -> "\"10\"":P2 [ ltail = "cluster 19" ]
+    "17dummy" -> "\"10\"":P3 [ ltail = "cluster 17" ]
+    "14dummy" -> "\"10\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"10\"":P5 [ ltail = "cluster 15" ]
+    "11dummy" -> "\"12\"":P1 [ ltail = "cluster 11" ]
+    "21dummy" -> "\"12\"":P2 [ ltail = "cluster 21" ]
+    "19dummy" -> "\"12\"":P3 [ ltail = "cluster 19" ]
+    "14dummy" -> "\"12\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"12\"":P5 [ ltail = "cluster 15" ]
+    "24dummy" -> "\"16\"":P1 [ ltail = "cluster 24" ]
+    "25dummy" -> "\"16\"":P2 [ ltail = "cluster 25" ]
+    "23dummy" -> "\"17\"":P1 [ ltail = "cluster 23" ]
+    "26dummy" -> "\"17\"":P2 [ ltail = "cluster 26" ]
+    "27dummy" -> "\"18\"":P1 [ ltail = "cluster 27" ]
+    "28dummy" -> "\"20\"":P1 [ ltail = "cluster 28" ]
+    "29dummy" -> "\"20\"":P2 [ ltail = "cluster 29" ]
+    "22dummy" -> "\"21\"":P0 [ ltail = "cluster 22" ]
+    "30dummy" -> "\"21\"":P1 [ ltail = "cluster 30" ]
+    "31dummy" -> "\"23\"":P1 [ ltail = "cluster 31" ]
+    "32dummy" -> "\"23\"":P2 [ ltail = "cluster 32" ]
+    "33dummy" -> "\"25\"":P1 [ ltail = "cluster 33" ]
+    "34dummy" -> "\"25\"":P2 [ ltail = "cluster 34" ]
+    "35dummy" -> "\"32\"":P1 [ ltail = "cluster 35" ]
+    "36dummy" -> "\"32\"":P2 [ ltail = "cluster 36" ]
+    "37dummy" -> "\"32\"":P3 [ ltail = "cluster 37" ]
+    "38dummy" -> "\"32\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"32\"":P5 [ ltail = "cluster 39" ]
+    "38dummy" -> "\"32\"":P6 [ ltail = "cluster 38" ]
+    "40dummy" -> "\"32\"":P7 [ ltail = "cluster 40" ]
+    "41dummy" -> "\"32\"":P8 [ ltail = "cluster 41" ]
+    "42dummy" -> "\"33\"":P1 [ ltail = "cluster 42" ]
+    "34dummy" -> "\"33\"":P2 [ ltail = "cluster 34" ]
+    "43dummy" -> "\"34\"":P1 [ ltail = "cluster 43" ]
+    "44dummy" -> "\"35\"":P1 [ ltail = "cluster 44" ]
+    "34dummy" -> "\"35\"":P2 [ ltail = "cluster 34" ]
+    "45dummy" -> "\"39\"":P1 [ ltail = "cluster 45" ]
+    "46dummy" -> "\"39\"":P2 [ ltail = "cluster 46" ]
+    "47dummy" -> "\"39\"":P3 [ ltail = "cluster 47" ]
+    "38dummy" -> "\"39\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"39\"":P5 [ ltail = "cluster 39" ]
+    "38dummy" -> "\"39\"":P6 [ ltail = "cluster 38" ]
+    "48dummy" -> "\"39\"":P7 [ ltail = "cluster 48" ]
+    "41dummy" -> "\"39\"":P8 [ ltail = "cluster 41" ]
+    "49dummy" -> "\"40\"":P1 [ ltail = "cluster 49" ]
+    "34dummy" -> "\"40\"":P2 [ ltail = "cluster 34" ]
+    "50dummy" -> "\"41\"":P1 [ ltail = "cluster 50" ]
+    "51dummy" -> "\"42\"":P1 [ ltail = "cluster 51" ]
+    "30dummy" -> "\"42\"":P2 [ ltail = "cluster 30" ]
+    "20dummy" -> "\"43\"":P0 [ ltail = "cluster 20" ]
+    "52dummy" -> "\"43\"":P1 [ ltail = "cluster 52" ]
+    "53dummy" -> "\"44\"":P1 [ ltail = "cluster 53" ]
+    "32dummy" -> "\"44\"":P2 [ ltail = "cluster 32" ]
+    "54dummy" -> "\"45\"":P1 [ ltail = "cluster 54" ]
+    "34dummy" -> "\"45\"":P2 [ ltail = "cluster 34" ]
+    "55dummy" -> "\"49\"":P1 [ ltail = "cluster 55" ]
+    "56dummy" -> "\"49\"":P2 [ ltail = "cluster 56" ]
+    "57dummy" -> "\"49\"":P3 [ ltail = "cluster 57" ]
+    "38dummy" -> "\"49\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"49\"":P5 [ ltail = "cluster 39" ]
+    "58dummy" -> "\"49\"":P6 [ ltail = "cluster 58" ]
+    "40dummy" -> "\"49\"":P7 [ ltail = "cluster 40" ]
+    "41dummy" -> "\"49\"":P8 [ ltail = "cluster 41" ]
+    "59dummy" -> "\"50\"":P1 [ ltail = "cluster 59" ]
+    "34dummy" -> "\"50\"":P2 [ ltail = "cluster 34" ]
+    "60dummy" -> "\"51\"":P1 [ ltail = "cluster 60" ]
+    "61dummy" -> "\"52\"":P1 [ ltail = "cluster 61" ]
+    "34dummy" -> "\"52\"":P2 [ ltail = "cluster 34" ]
+    "62dummy" -> "\"55\"":P1 [ ltail = "cluster 62" ]
+    "63dummy" -> "\"55\"":P2 [ ltail = "cluster 63" ]
+    "64dummy" -> "\"55\"":P3 [ ltail = "cluster 64" ]
+    "38dummy" -> "\"55\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"55\"":P5 [ ltail = "cluster 39" ]
+    "38dummy" -> "\"55\"":P6 [ ltail = "cluster 38" ]
+    "48dummy" -> "\"55\"":P7 [ ltail = "cluster 48" ]
+    "41dummy" -> "\"55\"":P8 [ ltail = "cluster 41" ]
+    "65dummy" -> "\"56\"":P1 [ ltail = "cluster 65" ]
+    "34dummy" -> "\"56\"":P2 [ ltail = "cluster 34" ]
+    "66dummy" -> "\"57\"":P1 [ ltail = "cluster 66" ]
+    "67dummy" -> "\"58\"":P1 [ ltail = "cluster 67" ]
+    "52dummy" -> "\"58\"":P2 [ ltail = "cluster 52" ]
+    "18dummy" -> "\"59\"":P0 [ ltail = "cluster 18" ]
+    "68dummy" -> "\"59\"":P1 [ ltail = "cluster 68" ]
+    "69dummy" -> "\"60\"":P1 [ ltail = "cluster 69" ]
+    "32dummy" -> "\"60\"":P2 [ ltail = "cluster 32" ]
+    "70dummy" -> "\"61\"":P1 [ ltail = "cluster 70" ]
+    "34dummy" -> "\"61\"":P2 [ ltail = "cluster 34" ]
+    "71dummy" -> "\"65\"":P1 [ ltail = "cluster 71" ]
+    "72dummy" -> "\"65\"":P2 [ ltail = "cluster 72" ]
+    "73dummy" -> "\"65\"":P3 [ ltail = "cluster 73" ]
+    "38dummy" -> "\"65\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"65\"":P5 [ ltail = "cluster 39" ]
+    "74dummy" -> "\"65\"":P6 [ ltail = "cluster 74" ]
+    "40dummy" -> "\"65\"":P7 [ ltail = "cluster 40" ]
+    "41dummy" -> "\"65\"":P8 [ ltail = "cluster 41" ]
+    "75dummy" -> "\"66\"":P1 [ ltail = "cluster 75" ]
+    "34dummy" -> "\"66\"":P2 [ ltail = "cluster 34" ]
+    "76dummy" -> "\"67\"":P1 [ ltail = "cluster 76" ]
+    "77dummy" -> "\"68\"":P1 [ ltail = "cluster 77" ]
+    "34dummy" -> "\"68\"":P2 [ ltail = "cluster 34" ]
+    "78dummy" -> "\"71\"":P1 [ ltail = "cluster 78" ]
+    "79dummy" -> "\"71\"":P2 [ ltail = "cluster 79" ]
+    "80dummy" -> "\"71\"":P3 [ ltail = "cluster 80" ]
+    "38dummy" -> "\"71\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"71\"":P5 [ ltail = "cluster 39" ]
+    "38dummy" -> "\"71\"":P6 [ ltail = "cluster 38" ]
+    "48dummy" -> "\"71\"":P7 [ ltail = "cluster 48" ]
+    "41dummy" -> "\"71\"":P8 [ ltail = "cluster 41" ]
+    "81dummy" -> "\"72\"":P1 [ ltail = "cluster 81" ]
+    "34dummy" -> "\"72\"":P2 [ ltail = "cluster 34" ]
+    "82dummy" -> "\"73\"":P1 [ ltail = "cluster 82" ]
+    "83dummy" -> "\"74\"":P1 [ ltail = "cluster 83" ]
+    "68dummy" -> "\"74\"":P2 [ ltail = "cluster 68" ]
+    "16dummy" -> "\"75\"":P0 [ ltail = "cluster 16" ]
+    "84dummy" -> "\"75\"":P1 [ ltail = "cluster 84" ]
+    "85dummy" -> "\"76\"":P1 [ ltail = "cluster 85" ]
+    "32dummy" -> "\"76\"":P2 [ ltail = "cluster 32" ]
+    "86dummy" -> "\"77\"":P1 [ ltail = "cluster 86" ]
+    "34dummy" -> "\"77\"":P2 [ ltail = "cluster 34" ]
+    "87dummy" -> "\"81\"":P1 [ ltail = "cluster 87" ]
+    "88dummy" -> "\"81\"":P2 [ ltail = "cluster 88" ]
+    "89dummy" -> "\"81\"":P3 [ ltail = "cluster 89" ]
+    "38dummy" -> "\"81\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"81\"":P5 [ ltail = "cluster 39" ]
+    "90dummy" -> "\"81\"":P6 [ ltail = "cluster 90" ]
+    "40dummy" -> "\"81\"":P7 [ ltail = "cluster 40" ]
+    "41dummy" -> "\"81\"":P8 [ ltail = "cluster 41" ]
+    "91dummy" -> "\"82\"":P1 [ ltail = "cluster 91" ]
+    "34dummy" -> "\"82\"":P2 [ ltail = "cluster 34" ]
+    "92dummy" -> "\"83\"":P1 [ ltail = "cluster 92" ]
+    "93dummy" -> "\"84\"":P1 [ ltail = "cluster 93" ]
+    "34dummy" -> "\"84\"":P2 [ ltail = "cluster 34" ]
+    "94dummy" -> "\"87\"":P1 [ ltail = "cluster 94" ]
+    "95dummy" -> "\"87\"":P2 [ ltail = "cluster 95" ]
+    "96dummy" -> "\"87\"":P3 [ ltail = "cluster 96" ]
+    "38dummy" -> "\"87\"":P4 [ ltail = "cluster 38" ]
+    "39dummy" -> "\"87\"":P5 [ ltail = "cluster 39" ]
+    "38dummy" -> "\"87\"":P6 [ ltail = "cluster 38" ]
+    "48dummy" -> "\"87\"":P7 [ ltail = "cluster 48" ]
+    "41dummy" -> "\"87\"":P8 [ ltail = "cluster 41" ]
+    "97dummy" -> "\"88\"":P1 [ ltail = "cluster 97" ]
+    "34dummy" -> "\"88\"":P2 [ ltail = "cluster 34" ]
+    "98dummy" -> "\"89\"":P1 [ ltail = "cluster 98" ]
+    "99dummy" -> "\"90\"":P1 [ ltail = "cluster 99" ]
+    "84dummy" -> "\"90\"":P2 [ ltail = "cluster 84" ]
+    "100dummy" -> "\"91\"":P1 [ ltail = "cluster 100" ]
+    "29dummy" -> "\"91\"":P2 [ ltail = "cluster 29" ]
+    "101dummy" -> "\"93\"":P1 [ ltail = "cluster 101" ]
+    "102dummy" -> "\"93\"":P2 [ ltail = "cluster 102" ]
+    "2dummy" -> "\"94\"":P1 [ ltail = "cluster 2" ]
+    "103dummy" -> "\"94\"":P2 [ ltail = "cluster 103" ]
+    "104dummy" -> "\"95\"":P1 [ ltail = "cluster 104" ]
+    "33dummy" -> "\"98\"":P1 [ ltail = "cluster 33" ]
+    "106dummy" -> "\"98\"":P2 [ ltail = "cluster 106" ]
+    "107dummy" -> "\"98\"":P3 [ ltail = "cluster 107" ]
+    "14dummy" -> "\"98\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"98\"":P5 [ ltail = "cluster 15" ]
+    "54dummy" -> "\"100\"":P1 [ ltail = "cluster 54" ]
+    "109dummy" -> "\"100\"":P2 [ ltail = "cluster 109" ]
+    "107dummy" -> "\"100\"":P3 [ ltail = "cluster 107" ]
+    "14dummy" -> "\"100\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"100\"":P5 [ ltail = "cluster 15" ]
+    "70dummy" -> "\"102\"":P1 [ ltail = "cluster 70" ]
+    "111dummy" -> "\"102\"":P2 [ ltail = "cluster 111" ]
+    "107dummy" -> "\"102\"":P3 [ ltail = "cluster 107" ]
+    "14dummy" -> "\"102\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"102\"":P5 [ ltail = "cluster 15" ]
+    "86dummy" -> "\"104\"":P1 [ ltail = "cluster 86" ]
+    "113dummy" -> "\"104\"":P2 [ ltail = "cluster 113" ]
+    "107dummy" -> "\"104\"":P3 [ ltail = "cluster 107" ]
+    "14dummy" -> "\"104\"":P4 [ ltail = "cluster 14" ]
+    "15dummy" -> "\"104\"":P5 [ ltail = "cluster 15" ]
+    "108dummy" -> "\"105\"":P0 [ ltail = "cluster 108" ]
+    "110dummy" -> "\"105\"":P1 [ ltail = "cluster 110" ]
+    "112dummy" -> "\"105\"":P2 [ ltail = "cluster 112" ]
+    "114dummy" -> "\"105\"":P3 [ ltail = "cluster 114" ]
+    "115dummy" -> "\"106\"":P1 [ ltail = "cluster 115" ]
+    "32dummy" -> "\"106\"":P2 [ ltail = "cluster 32" ]
+    "105dummy" -> "\"107\"":P0 [ ltail = "cluster 105" ]
+    "116dummy" -> "\"107\"":P1 [ ltail = "cluster 116" ]
+    "117dummy" -> "\"108\"":P0 [ ltail = "cluster 117" ]
+    "24dummy" -> "\"108\"":P1 [ ltail = "cluster 24" ]
+    "11dummy" -> "\"108\"":P2 [ ltail = "cluster 11" ]
+}

@@ -1,0 +1,7 @@
+/mnt/kws_c++/build/CMakeFiles/kws.elf.dir
+/mnt/kws_c++/build/CMakeFiles/edit_cache.dir
+/mnt/kws_c++/build/CMakeFiles/rebuild_cache.dir
+/mnt/kws_c++/build/CMakeFiles/list_install_components.dir
+/mnt/kws_c++/build/CMakeFiles/install.dir
+/mnt/kws_c++/build/CMakeFiles/install/local.dir
+/mnt/kws_c++/build/CMakeFiles/install/strip.dir

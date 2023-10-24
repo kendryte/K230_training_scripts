@@ -175,20 +175,35 @@ SD卡镜像也可在嘉楠开发者社区下载：
 
 ### 镜像烧录
 
+**CANMV-K230开发板**：
+
+编译结束后在output/k230_canmv_defconfig/images目录下可以找到编译好的镜像文件：
+
+```
+k230_canmv_defconfig/images
+├── big-core
+├── little-core
+├── sysimage-sdcard.img    # SD卡镜像
+├── sysimage-sdcard.img.gz # SD卡镜像压缩包
+```
+
+CANMV-K230开发板支持SD卡镜像启动。
+
+**K230-EVB开发板**：
+
 编译结束后在output/k230_evb_defconfig/images目录下可以找到编译好的镜像文件：
+
 ```
 k230_evb_defconfig/images
 ├── big-core
-├── env.env
-├── jffs2.env
 ├── little-core
 ├── sysimage-sdcard.img    # SD和emmc非安全启动镜像
 ├── sysimage-sdcard.img.gz # SD和emmc的非安全启动镜像压缩包
 ├── sysimage-spinor32m.img # norflash非安全启动镜像
-├── sysimage-spinor32m.img.gz    # norflash非安全启动镜像压缩包
 └── sysimage-spinor32m_jffs2.img # norflash jffs2非安全启动镜像
 ```
-K230 支持SDCard、eMMC、norflash等多种启动方式，用户可以通过改变开板上启动拔码开关的设置，来切换不同启动模式。 为方便开发，建议您准备一张TF卡，并将拔码开关切换至SD卡启动模式，后续可考虑将镜像文件固化至emmc中。
+
+K230 支持SDCard、eMMC、norflash等多种启动方式。
 
 **烧录TF卡**
 
