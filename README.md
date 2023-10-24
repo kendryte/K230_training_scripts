@@ -2,7 +2,7 @@
 
 本项目是嘉楠科技勘智系列AIOT芯片K230端到端的全流程教程，实现了从数据处理、模型训练、模型转换、K230_sdk环境搭建、镜像编译和烧录、PC和开发板文件传输、模型板上部署全流程过程。
 
-**视觉任务：**图像分类和目标检测；
+**视觉任务**：图像分类和目标检测；
 
 - [图像分类任务以蔬菜分类作为应用案例实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_cls_doc)；
 
@@ -12,11 +12,11 @@
 
   BiliBili视频链接：[认准那个小目标：保姆级演示使用勘智K230部署目标检测算法_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV18u41137sN/?vd_source=f06c64cf853ec01c8ee44cf119abc7f0)
 
-**自然语言处理任务：**英译中任务；
+**自然语言处理任务**：英译中任务；
 
 - [英译中任务](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_translate_doc)；
 
-**语义任务：**关键词唤醒（KWS）；
+**语义任务**：关键词唤醒（KWS）；
 
 - [关键词唤醒任务以"小楠小楠"作为唤醒词实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_kws_doc)；
 

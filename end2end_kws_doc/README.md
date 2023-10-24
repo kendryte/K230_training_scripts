@@ -821,11 +821,15 @@ kws_stream.elf avg_10.kmodel xiaonan 2 0.5 0
 
 小楠响应“叫我干嘛”：
 
-<audio src="./resource/叫我干嘛.mp3"></audio>
+<audio controls>
+  <source src="./resource/叫我干嘛.mp3" type="audio/mpeg">
+</audio>
 
 小楠响应“我在”：
 
-<audio src="./resource/我在.mp3"></audio>
+<audio controls>
+  <source src="./resource/我在.mp3" type="audio/mpeg">
+</audio>
 
 ## 工具
 
