@@ -16,23 +16,27 @@
 
 - [英译中任务](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_translate_doc)；
 
-**语义任务**：关键词唤醒（KWS）；
+​	BiliBili视频链接：[英译中一键搞定：勘智K230部署机器翻译模型_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1fC4y1J7mr/?spm_id_from=333.999.0.0&vd_source=44017c249f4b4c572672eb7cd1c45d17)
+
+**语音任务**：关键词唤醒（KWS）；
 
 - [关键词唤醒任务以"小楠小楠"作为唤醒词实现](https://github.com/kendryte/K230_training_scripts/tree/main/end2end_kws_doc)；
+
+​	BiliBili视频链接：[唤醒你的"AI"：勘智K230关键词唤醒教程_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Tw411W7dW/?spm_id_from=333.999.0.0&vd_source=44017c249f4b4c572672eb7cd1c45d17)
 
 ## K230_SDK和nncase的版本
 
 | K230_SDK Tag | nncase&nncase-kpu版本 |
 | ------------ | --------------------- |
-| 1.0.1        | 2.3.0                 |
+| 1.1          | 2.4.0                 |
 
 在使用过程中，请保证sdk和nncase的版本对应关系。
 
 **K230_SDK拉取命令：**
 
 ```
-# clone K230_SDK Tag1.0.1
-git clone -b v1.0.1 --single-branch  https://github.com/kendryte/k230_sdk.git
+# clone K230_SDK Tag1.1
+git clone -b v1.1 --single-branch  https://github.com/kendryte/k230_sdk.git
 ```
 
 **nncase&nncase-kpu安装示例：**
@@ -43,7 +47,7 @@ git clone -b v1.0.1 --single-branch  https://github.com/kendryte/k230_sdk.git
 pip uninstall nncase
 pip uninstall nncase-kpu
 # 执行安装
-pip install nncase==2.3.0
-pip install nncase-kpu==2.3.0
+pip install nncase==2.4.0
+pip install nncase-kpu==2.4.0
 ```
 
