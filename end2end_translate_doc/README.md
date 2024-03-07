@@ -139,7 +139,7 @@ python3 inference.py
 ## 使用k230部署模型
 ### 环境准备和镜像编译
 
-**注意：训练环境中nncase和nncase-kpu的版本和SDK的版本要对应，nncase和nncase-kpu版本为2.3.0，SDK版本为1.0.1。**
+**注意：训练环境中nncase和nncase-kpu的版本和SDK的版本要对应，nncase和nncase-kpu版本为2.4.0，SDK版本为1.1。**
 
 K230 SDK需要在**_Linux环境_**下编译，推荐使用Ubuntu Liunx 20.04。
 使用docker编译环境，下载[k230_sdk](https://github.com/kendryte/k230_sdk)。
@@ -150,7 +150,7 @@ docker pull ghcr.io/kendryte/k230_sdk
 # 可以使用以下命令确认docker镜像拉取成功
 docker images | grep k230_sdk
 # 下载sdk
-git clone -b v1.0.1 --single-branch https://github.com/kendryte/k230_sdk.git
+git clone -b v1.1 --single-branch https://github.com/kendryte/k230_sdk.git
 cd k230_sdk
 # 下载工具链，make prepare_sourcecode 会自动下载Linux和RT-Smart toolchain, buildroot package, AI package等. 请确保该命令执行成功并没有Error产生，下载时间和速度以实际网速为准。
 make prepare_sourcecode
@@ -169,11 +169,7 @@ make CONF=k230_canmv_defconfig
 make CONF=k230_evb_defconfig
 ```
 
-SD卡镜像也可在嘉楠开发者社区下载：
-
-[canmv-k230开发板1.0.1版本SD卡镜像](https://kendryte-download.canaan-creative.com/developer/k230/k230_canmv_sysimage-sdcard_V1.0.1.img.gz)
-
-[k230-evb开发板1.0.1版本SD卡镜像](https://kendryte-download.canaan-creative.com/developer/k230/k230_evb_sysimage-sdcard_V1.0.1.img.gz)
+SD卡镜像也可在嘉楠开发者社区下载：开发者社区-->资料下载-->K230-->Images。
 
 ### 镜像烧录
 
@@ -862,10 +858,6 @@ main.elf best_encoder.kmodel best_decoder.kmodel src.model tag.model 0
 局域网文件传输工具Tftpd64：[https://bitbucket.org/phjounin/tftpd64/downloads/](https://bitbucket.org/phjounin/tftpd64/downloads/)
 
 MobaXterm下载地址：[https://mobaxterm.mobatek.net/download.html](https://mobaxterm.mobatek.net/download.html)
-
-CANMV-K230开发板1.0.1版本SD卡镜像下载：https://kendryte-download.canaan-creative.com/developer/k230/k230_canmv_sysimage-sdcard_V1.0.1.img.gz
-
-K230-EVB开发板1.0.1版本SD卡镜像下载：https://kendryte-download.canaan-creative.com/developer/k230/k230_evb_sysimage-sdcard_V1.0.1.img.gz
 
 ## 参考
 k230_sdk github：[https://github.com/kendryte/k230_sdk](https://github.com/kendryte/k230_sdk)
