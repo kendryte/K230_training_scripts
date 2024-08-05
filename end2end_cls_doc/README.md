@@ -63,10 +63,10 @@ curl -sSL https://get.daocloud.io/docker | sh
 conda create -n myenv python=3.9
 # 激活虚拟环境
 conda activate myenv
-# 按照项目内的requriements.txt安装训练所用的python库,等待安装
-pip install -r requriements.txt
+# 按照项目内的requirements.txt安装训练所用的python库,等待安装
+pip install -r requirements.txt
 ```
-在requriments.txt中会安装模型转换的包nncase和nncase-kpu，`nncase 是一个为 AI 加速器设计的神经网络编译器，参考[nncase](https://github.com/kendryte/nncase)。
+在requirements.txt中会安装模型转换的包nncase和nncase-kpu，`nncase 是一个为 AI 加速器设计的神经网络编译器，参考[nncase](https://github.com/kendryte/nncase)。
 
 ### 安装dotnet
 
