@@ -211,11 +211,11 @@ training_config:
 ./run.sh -1 5 end2end_kws_doc xiaonanxiaonan 2 0
 # 多唤醒词时
 # ./run.sh -1 5 end2end_kws_doc xiaonanxiaonan_xiaonantongxue 3 0
-# 上述命令表示使用 GPU 0 完成从数据处理到导出kmodel的整个流程,注意替换自己的项目路径
+# 上述命令表示使用 GPU 0 完成从数据处理到导出kmodel的整个流程,注意替换自己的项目路径，同时多个唤醒词是必须修改conf/ds_tcn.yaml中的model:output_dim变量，改为唤醒词数目即n+1
 
 # 重训时需要删除example/speech_commands_v1目录下的my_data文件夹
 ```
-如果训练成功，在```example/speech_commands_v1/s0/exp/xiaonanxiaonan```路径下可以找到```avg_10.pt```，
+如果训练成功，在```example/speech_commands_v1/s0/exp/```路径下可以找到```avg_10.pt```，
 ```avg_10.onnx```和```avg_10.kmodel```。
 
 ## 使用k230部署模型

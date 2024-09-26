@@ -71,7 +71,7 @@ def generate_data_ramdom(shapes, sample):
 def generate_data(target_labels=None,  # 自己数据集对应的标签，默认Hi_Xiaonan数据集的标签：[-1, 0, 1]
                   sample_count_per_label=20,  # 每个标签采集的校正数据数量
                   test_lable_file="/mnt/wekws-main/examples/speechcommand_v1/s0/data/valid/text",
-                  wav_data_directory="/mnt/wekws-main/examples/speechcommand_v1/xiaonanxiaonan/valid"):
+                  wav_data_directory="/mnt/wekws-main/examples/speechcommand_v1/my_data/valid"):
     sampled_feature, sampled_incache = sampled_wav_to_feature(target_labels, sample_count_per_label, test_lable_file, wav_data_directory)
     return [sampled_feature, sampled_incache]
 

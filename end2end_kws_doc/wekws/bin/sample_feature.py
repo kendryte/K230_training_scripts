@@ -3,7 +3,7 @@ import random
 from stream_kws_ctc import KeyWordSpotter
 
 
-kws_xiaowen = KeyWordSpotter(ckpt_path='exp/xiaonanxiaonan/avg_10.pt',
+kws_xiaowen = KeyWordSpotter(ckpt_path='exp/avg_10.pt',
                              config_path='conf/ds_tcn.yaml',
                              token_path='conf/tokens.txt',
                              lexicon_path='conf/lexicon.txt',
@@ -50,7 +50,7 @@ def sample_wav(target_labels=None,
 def sampled_wav_to_feature(target_labels=None,
                            sample_count_per_label=20,
                            test_lable_file="/mnt/wekws-main/examples/speechcommand_v1/s0/data/test/text",
-                           wav_data_directory="/mnt/wekws-main/examples/speechcommand_v1/xiaonanxiaonan/test"):
+                           wav_data_directory="/mnt/wekws-main/examples/speechcommand_v1/my_data/test"):
 
     sampled_feature = []
     sampled_incache = []

@@ -28,7 +28,7 @@ norm_var=false
 
 checkpoint=
 # 保存权重文件和各种模型的路径
-dir=exp/$my_keyword
+dir=exp
 
 # 平均模型的数量
 num_average=10
