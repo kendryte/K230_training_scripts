@@ -35,8 +35,8 @@ if __name__ == '__main__':
                         help='folder to write kaldi format files')
     args = parser.parse_args()
 
-    CLASSES = f'unknown, {args.my_keyword}'.split(
-        ', ')
+    CLASSES = f'unknown_{args.my_keyword}'.split('_')
+    # CLASSES='unknown, yes'.split(', ')
     CLASS_TO_IDX = {CLASSES[i]: str(i) for i in range(len(CLASSES))}
 
     data_dir = args.data_dir

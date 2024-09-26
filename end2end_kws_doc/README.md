@@ -104,9 +104,14 @@ cd /sharefs/app
 
 # 创建音频存储文件夹
 mkdir wav_from_k230
+mkdir wav_from_k230/xiaonanxiaonan
+# 如果训练多个唤醒词，需要您按照唤醒词拼音创建所有文件夹
+# 比如：
+#mkdir wav_from_k230/xiaonantongxue
+#mkdir wav_from_k230/nannan
 
-# 在开发板上采集音频
-./sample_audio.elf -type 0 -samplerate 16000 -bitwidth 16 -channels 1 -enablecodec 1 -filename ./wav_from_k230/xiaonan_1.wav
+# 在开发板上采集音频,每个唤醒词的音频数据放到对应的文件夹下
+./sample_audio.elf -type 0 -samplerate 16000 -bitwidth 16 -channels 1 -enablecodec 1 -filename ./wav_from_k230/xiaonanxiaonan/xiaonan_1.wav
 
 # 将录制的音频从开发板传输到服务器或者主机用于训练
 scp wav_from_k230/* your_user_name@your_IP:/path/to/wav_from_k230
@@ -184,9 +189,9 @@ training_config:
 # stop_stage 为run.sh的结束阶段
 # project_path 为项目地址的绝对路径，例如我的项目为end2end_kws，其在/mnt/end2end_kws，则该参数为
 # end2end_kws_doc，注意：/end2end_kws/这种写法是错误的！
-# my_keyword 想训练的关键词，用字母表示，例如小楠小楠=xiaonanxiaonan
-# num_keyword 关键词数量，一个关键词则为2
-# gpu_index 为GPU索引
+# my_keyword 想训练的关键词，用字母表示，例如小楠小楠=xiaonanxiaonan，多个关键词用“_”连接，比如：xiaonanxiaonan_xiaonantongxue
+# num_keyword 关键词数量，一个关键词则为2,两个关键词为3，n个关键词加上负样本总共为n+1
+# gpu_index 为GPU索引,'-1'/'0'/1'/'1,2,3',-1为CPU，其他为GPU索引
 
 # run.sh中包含6个阶段：
 #    -1阶段为将数据划分为训练集，验证集和测试集
@@ -199,12 +204,16 @@ training_config:
 
 # 例如：
 ./run.sh -1 -1 end2end_kws_doc xiaonanxiaonan 2 0
+# 多唤醒词时
+# ./run.sh -1 -1 end2end_kws_doc xiaonanxiaonan_xiaonantongxue 3 0
 # 表示只执行-1阶段
 
 ./run.sh -1 5 end2end_kws_doc xiaonanxiaonan 2 0
+# 多唤醒词时
+# ./run.sh -1 5 end2end_kws_doc xiaonanxiaonan_xiaonantongxue 3 0
 # 上述命令表示使用 GPU 0 完成从数据处理到导出kmodel的整个流程,注意替换自己的项目路径
 
-# 重训时需要删除example/speech_commands_v1目录下的关键词文件夹，如xiaonanxiaonan
+# 重训时需要删除example/speech_commands_v1目录下的my_data文件夹
 ```
 如果训练成功，在```example/speech_commands_v1/s0/exp/xiaonanxiaonan```路径下可以找到```avg_10.pt```，
 ```avg_10.onnx```和```avg_10.kmodel```。

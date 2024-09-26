@@ -243,6 +243,8 @@ def main():
 
     if final_epoch is not None and rank == 0:
         final_model_path = os.path.join(model_dir, 'final.pt')
+        if os.path.exists(final_model_path):
+            os.remove(final_model_path)
         os.symlink('{}.pt'.format(final_epoch), final_model_path)
         writer.close()
 

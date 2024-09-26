@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 2021  Binbin Zhang
 #                 Jingyong Hou
-# modified by     Pan Kai
+
 
 . ./path.sh
 
@@ -43,16 +43,17 @@ kmodel=$dir/avg_${num_average}.kmodel
 # your data dir
 # download_dir=$project_path/wekws-main/examples/speechcommand_v1
 download_dir=$project_path/examples/speechcommand_v1
-speech_command_dir=$download_dir/$my_keyword
+speech_command_dir=$download_dir/my_data
 . $project_path/tools/parse_options.sh || exit 1;
 
 set -euo pipefail
 
 if [ ${stage} -le -1 ] && [ ${stop_stage} -ge -1 ]; then
   echo "stage -1 : preprocess dataset!"
+  rm -r $speech_command_dir
   local/data_download.sh $download_dir $my_keyword $project_path
 
-  python local/split_dataset.py $download_dir/$my_keyword
+  python local/split_dataset.py $download_dir/my_data
   echo "stage -1 : done!"
 fi
 
@@ -146,7 +147,7 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ]; then
     --target_labels 0 1 \
     --sample_count_per_label 20 \
     --test_lable_file data/valid/text \
-    --wav_data_directory ../$my_keyword/valid
+    --wav_data_directory ../my_data/valid
   echo "stage 5 : done!"
 fi
 
@@ -158,7 +159,7 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
     --target_labels 0 1 \
     --sample_count_per_label 20 \
     --test_lable_file data/valid/text \
-    --wav_data_directory ../$my_keyword/valid
+    --wav_data_directory ../my_data/valid
   echo "stage 6 : done!"
 fi
 
