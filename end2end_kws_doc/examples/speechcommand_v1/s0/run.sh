@@ -50,7 +50,9 @@ set -euo pipefail
 
 if [ ${stage} -le -1 ] && [ ${stop_stage} -ge -1 ]; then
   echo "stage -1 : preprocess dataset!"
-  rm -r $speech_command_dir
+  if [ -d "$speech_command_dir" ]; then
+    # 如果存在，则执行删除操作
+    rm -r "$speech_command_dir"
   local/data_download.sh $download_dir $my_keyword $project_path
 
   python local/split_dataset.py $download_dir/my_data
