@@ -1,5 +1,7 @@
 # k230关键词唤醒教程
-## 简介 
+
+## 简介
+
 K230芯片是嘉楠科技 Kendryte®系列AIoT芯片中的最新一代SoC产品。该芯片采用全新的多异构单元加速计算架构，集成了2个RISC-V高能效计算核心，内置新一代KPU（Knowledge Process Unit）智能计算单元，具备多精度AI算力，广泛支持通用的AI计算框架，部分典型网络的利用率超过了70%。
 该芯片同时具备丰富多样的外设接口，以及2D、2.5D等多个标量、向量、图形等专用硬件加速单元，可以对多种图像、视频、音频、AI等多样化计算任务进行全流程计算加速，具备低延迟、高性能、低功耗、快速启动、高安全性等多项特性。
 ![image.png](./resource/structure.png)
@@ -9,17 +11,23 @@ K230芯片是嘉楠科技 Kendryte®系列AIoT芯片中的最新一代SoC产品�
 本教程选择训练自己的关键词——小楠小楠为例。
 
 ## 环境说明
+
 ### 显卡环境
+
 本教程默认使用CUDA的用户已经安装好合适的显卡驱动，且已搭建好CUDA环境。
+
 ### 安装anaconda
+
 如果已安装anaconda或miniconda，请忽略此步骤。
 anaconda用于创建虚拟环境，将PyTorch模型训练环境和其他环境隔离。
+
 ```shell
 apt-get install -y wget
 wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh #可以选择合适的版本安装
 chmod +x Anaconda3-5.3.0-Linux-x86_64.sh
 ./Anaconda3-5.3.0-Linux-x86_64.sh
 ```
+
 出现如下界面：
 
 ![image.png](./resource/anaconda1.png)
@@ -45,20 +53,29 @@ chmod +x Anaconda3-5.3.0-Linux-x86_64.sh
 ```shell
 conda -V
 ```
+
 若返回conda版本，表示安装成功。
+
 ### 安装docker
+
 若已安装docker，请忽略此步骤。
 Docker官方和国内daocloud都提供了一键安装的脚本，使得Docker的安装更加便捷。
 官方的一键安装方式：
+
 ```shell
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
+
 国内 daocloud一键安装命令：
+
 ```shell
 curl -sSL https://get.daocloud.io/docker | sh
 ```
+
 执行上述任一条命令，耐心等待即可完成Docker的安装。
+
 ### 创建模型训练环境
+
 ```shell
 # 使用anaconda创建模型训练的虚拟环境
 conda create -n myenv python=3.8.0
@@ -67,6 +84,7 @@ conda activate myenv
 # 按照项目内的requirements.txt安装训练所用的python库,等待安装
 pip install -r requirements.txt
 ```
+
 在requirements.txt中会安装模型转换的包nncase和nncase-kpu，`nncase` 是一个为 AI 加速器设计的神经网络编译器，参考[nncase](https://github.com/kendryte/nncase)。
 
 ### 安装dotnet
@@ -78,8 +96,11 @@ apt update
 apt install -y apt-transport-https
 apt install -y dotnet-sdk-7.0
 ```
+
 ### 添加nncase插件到环境变量
+
 ***注意：此步骤需要根据个人机器中实际情况完成。如果使用anaconda虚拟环境，在anaconda安装位置下的envs目录下，选择为训练创建的虚拟环境myenv，在其下面选择lib/python3.9/site-packages/，也就是pip安装requirements.txt内nncase和nncase-kpu的安装位置。source后会退出当前虚拟环境，需要再次激活。如果直接使用机器上的python，则需要添加其下的lib/python3.9/site_packages/。具体python版本自己控制。***
+
 ```shell
 # python安装路径由自己机器实际情况修改
 export NNCASE_PLUGIN_PATH=$NNCASE_PLUGIN_PATH:/usr/local/lib/python3.9/site-packages/
@@ -87,8 +108,11 @@ export PATH=$PATH:/usr/local/lib/python3.9/site-packages/
 source /etc/profile
 conda activate myenv
 ```
+
 ## 准备自己的唤醒词数据
+
 ### 组织数据
+
 本方法借助开源数据集speech_commands来训练自己的唤醒词，开发者需要准备两份数据：
 
 1.下载speech_commands_v0.01.tar.gz作为负样本数据。
@@ -99,6 +123,7 @@ conda activate myenv
 2.在K230开发板上录制wav_from_k230.zip作为正样本。
 
 该数据集需要开发者自行在k230上录制，录制步骤示例：
+
 ```shell
 cd /sharefs/app
 
@@ -122,6 +147,7 @@ scp wav_from_k230/* your_user_name@your_IP:/path/to/wav_from_k230
 录制的样本示例可以参考```./resource/xiaonan.wav```
 
 将准备的数据按照以下格式放在项目下的```example/speech_commands_v1```下：
+
 ```shell
 `-- example
     `-- speech_commands_v1
@@ -131,7 +157,9 @@ scp wav_from_k230/* your_user_name@your_IP:/path/to/wav_from_k230
 ```
 
 ### 配置训练参数
+
 模型训练用到的参数文件为```example/speech_commands_v1/s0/conf/ds_tcn.yaml```：
+
 ```yaml
 dataset_conf:
     filter_conf:
@@ -181,8 +209,11 @@ training_config:
     max_epoch: 100
     log_interval: 10
 ```
+
 ### 模型训练&模型测试&导出kmodel
+
 进入到工程的```example/speech_commands_v1/s0```目录，执行训练代码：
+
 ```shell
 ./run.sh stage stop_stage project_path my_keyword num_keyword gpu_index
 # stage 为run.sh脚本的开始阶段
@@ -215,13 +246,15 @@ training_config:
 
 # 重训时需要删除example/speech_commands_v1目录下的my_data文件夹
 ```
+
 如果训练成功，在```example/speech_commands_v1/s0/exp/```路径下可以找到```avg_10.pt```，
 ```avg_10.onnx```和```avg_10.kmodel```。
 
 ## 使用k230部署模型
+
 ### 环境准备和镜像编译
 
-**注意：训练环境中nncase和nncase-kpu的版本和SDK的版本要对应，nncase和nncase-kpu版本为2.4.0，SDK版本为1.1。**
+**注意：训练环境中nncase和nncase-kpu的版本和SDK的版本要对应，nncase和nncase-kpu版本为2.9.0，SDK版本为1.8。**
 
 K230 SDK需要在**_Linux环境_**下编译，推荐使用Ubuntu Liunx 20.04。
 使用docker编译环境，下载[k230_sdk](https://github.com/kendryte/k230_sdk)。
@@ -232,32 +265,29 @@ docker pull ghcr.io/kendryte/k230_sdk
 # 可以使用以下命令确认docker镜像拉取成功
 docker images | grep k230_sdk
 # 下载sdk
-git clone -b v1.1 --single-branch https://github.com/kendryte/k230_sdk.git
+git clone https://github.com/kendryte/k230_sdk.git
 cd k230_sdk
 # 下载工具链，make prepare_sourcecode 会自动下载Linux和RT-Smart toolchain, buildroot package, AI package等. 请确保该命令执行成功并没有Error产生，下载时间和速度以实际网速为准。
 make prepare_sourcecode
 # 创建docker容器，$(pwd):$(pwd)表示系统当前目录映射到docker容器内部的相同目录下，将系统下的工具链目录映射到docker容器内部的/opt/toolchain目录下
 docker run -u root -it -v $(pwd):$(pwd) -v $(pwd)/toolchain:/opt/toolchain -w $(pwd) ghcr.io/kendryte/k230_sdk /bin/bash
 ```
-K230现有两种开发板，分别为CANMV-K230-V1.0（以下简称CANMV-K230）和K230-USIP-LP3-EVB（以下简称K230-EVB）。两种开发板区别如图：
 
-![canmv_and_evb](./resource/canmv_and_evb.jpg)
+K230现有多种开发板，本教程支持CANMV-K230-V1.0/V1.1和 01Studio CanMV K230。编译开发板镜像，您可以选择在嘉楠开发者社区下载对应双系统镜像，下载链接见：[嘉楠开发者社区-资料下载](https://developer.canaan-creative.com/resource?selected=0-0-0)
 
 ```shell
 # 在docker中编译镜像，请耐心等待完成，不同类型开发板编译命令不同
 # 如果是CANMV-K230开发板
 make CONF=k230_canmv_defconfig
-# 如果是K230-EVB开发板
-make CONF=k230_evb_defconfig
+# 如果是01Studio开发板，需要自己编译固件
+make CONF=k230_canmv_01studio_defconfig
 ```
-
-SD卡镜像也可在嘉楠开发者社区下载：开发者社区-->资料下载-->K230-->Images。
 
 ### 镜像烧录
 
-**CANMV-K230开发板**：
+**开发板镜像**：
 
-编译结束后在output/k230_canmv_defconfig/images目录下可以找到编译好的镜像文件：
+编译结束后在`output/****_defconfig/images`目录下可以找到编译好的镜像文件：
 
 ```
 k230_canmv_defconfig/images
@@ -267,50 +297,11 @@ k230_canmv_defconfig/images
 ├── sysimage-sdcard.img.gz # SD卡镜像压缩包
 ```
 
-CANMV-K230开发板支持SD卡镜像启动。
-
-**K230-EVB开发板**：
-
-编译结束后在output/k230_evb_defconfig/images目录下可以找到编译好的镜像文件：
-
-```
-k230_evb_defconfig/images
-├── big-core
-├── little-core
-├── sysimage-sdcard.img    # SD和emmc非安全启动镜像
-├── sysimage-sdcard.img.gz # SD和emmc的非安全启动镜像压缩包
-├── sysimage-spinor32m.img # norflash非安全启动镜像
-└── sysimage-spinor32m_jffs2.img # norflash jffs2非安全启动镜像
-```
-
-K230 支持SDCard、eMMC、norflash等多种启动方式。
-
 **烧录TF卡**
 
-详细烧录步骤参考[K230_SDK_使用说明](https://github.com/kendryte/k230_docs/blob/main/zh/01_software/board/K230_SDK_%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)。
+详细烧录步骤参考[CanMV K230 教程 &#8212; K230 Linux+RT-Smart SDK](https://developer.canaan-creative.com/k230/zh/dev/CanMV_K230_%E6%95%99%E7%A8%8B.html#id7)。
 
-**Linux:** 如使用Linux烧录TF卡,需要先确认SD卡在系统中的名称/dev/sdx, 并替换如下命令中的/dev/sdx
-
-```
-sudo dd if=sysimage-sdcard.img of=/dev/sdx bs=1M oflag=sync
-```
-**Windows:** 如使用Windows烧录, 建议使用[the balena Etcher](https://etcher.balena.io/)工具。将生成的sysimage-sdcard.img下载到本地，使用烧录工具[the balena Etcher](https://etcher.balena.io)进行烧录。
-<img src="./resource/balenaetcher.png" alt="image.png" style="zoom:50%;" />
-其它更详细的烧录方法，请参考[K230_SDK_使用说明](https://github.com/kendryte/k230_docs/blob/main/zh/01_software/board/K230_SDK_%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)。
-
-### 上电启动K230 EVB开发板
-
-#### K230-EVB开发板上电启动
-
-K230 EVB支持SDCard、eMMC、norflash等多种启动方式，用户可以通过改变开板上启动拔码开关的设置，来切换不同启动模式。 为方便开发，建议您准备一张TF卡，并将**拔码开关切换至SD卡启动模式**，后续可考虑将镜像文件固化至emmc中。
-
-1. 请先**确认启动开关SW1选择在SD卡启动模式**下（详情可参考[开机上电方式](https://github.com/kendryte/k230_docs/blob/main/zh/00_hardware/K230_DEMO_BOARD资源使用指南.md#电源区开机上电方式)）
-2. 将烧录完成的TF卡插入开发板TF卡槽中
-3. 开发板接上电源
-4. **将电源开关K1拔到ON位置**，系统可上电启动
-5. 如果您有接好串口，可在串口中看到启动日志输出。
-
-#### CanMV-K230开发板上电启动
+### 上电启动开发板
 
 K230 CanMV-K230开发板支持SDCard启动方式、HDMI输出显示，因此，需要准备一张TF卡，此外建议准备一个HDMI显示器。
 
@@ -321,13 +312,25 @@ K230 CanMV-K230开发板支持SDCard启动方式、HDMI输出显示，因此，�
 
 小核Linux默认用户名root，密码为空。大核RTSmart系统中开机会自动启动一个应用程序，可按`q`键退出至命令提示符终端。
 
-### PC和k230文件传输配置与实现
+### PC和k230文件拷贝方法
+
+#### 离线拷贝
+
+直接插拔TF卡将需要的文件拷贝到TF卡根目录下。开发板上电后，通过调试串口可在`sharefs` 目录下发现拷贝的文件。
+
 #### windows系统
+
+##### scp拷贝
+
+k230_sdk 1.5版本之后支持连接网线自动获取IP，您可以使用scp拷贝文件。
+
+##### 局域网TFTP拷贝
+
 （1）Tftpd64安装，在[https://bitbucket.org/phjounin/tftpd64/downloads/](https://bitbucket.org/phjounin/tftpd64/downloads/)下载。
 
 （2）MobaXterm安装：在[https://mobaxterm.mobatek.net/download.html](https://mobaxterm.mobatek.net/download.html)下载安装。
 
-（2）配置PC网络：
+（3）配置PC网络：
 
 <img src="./resource/net1.png" alt="image.png" style="zoom:50%;" />
 <img src="./resource/net2.png" alt="image.png" style="zoom:50%;" />
@@ -361,12 +364,16 @@ K230 CanMV-K230开发板支持SDCard启动方式、HDMI输出显示，因此，�
 # 192.168.1.2 为PC的局域网IP
 tftp -g -r your_file_name 192.168.1.2
 ```
+
 当将开发板文件拷贝到PC端Tftpd64配置的文件夹下时，在小核使用如下命令：
+
 ```shell
 # 192.168.1.2 为PC的局域网IP
 tftp -p -r your_file_name 192.168.1.2
 ```
+
 #### Linux系统
+
 在Linux系统中，PC正常连接网络，开发板可以通过网线连接PC所在网关下其他网口，通过scp命令实现文件传输。
 
 开发板上电，进入大小核COM界面，在小核执行scp传输命令：
@@ -377,9 +384,13 @@ scp 用户名@域名或IP:文件所在目录 开发板目的目录
 # 从开发板拷贝文件至PC
 scp 开发板待拷贝目录 用户名@域名或IP:PC目的目录
 ```
+
 ### 上板code解析
+
 完成上述开发板的准备工作后，我们可以使用C++编写自己的代码，下面就关键词唤醒任务的示例代码进行解析。本教程给出相关关键词唤醒任务的示例代码，并进行简单解析。
+
 #### 代码结构
+
 ```
 k230_code
 ├── kws_stream
@@ -404,7 +415,9 @@ k230_code
 ├── CMakeLists.txt
 ├── build_app.sh
 ```
+
 #### 核心代码
+
 ```cpp
 /**
  * @brief AI基类，封装nncase相关操作
@@ -490,7 +503,9 @@ vector<unsigned char> kmodel_vec_; // 通过读取kmodel文件得到整个kmodel
 interpreter kmodel_interp_; 
 };
 ```
+
 上述代码是ai_base.h文件中AIBase类的定义代码。主要定义了kmodel解释器，kmodel的相关信息，以及输入输出设置、推理过程的接口定义。具体实现在ai_base.cc中。
+
 ```cpp
 /**
  * @brief KWS——关键词唤醒
@@ -508,7 +523,7 @@ class KWS : public AIBase
         * @return None
         */
         KWS(const char *kmodel_file, const std::string task_name, const int num_keyword, const float spot_thresh, const int debug_mode);
-        
+
         ~KWS();
 
         bool pre_process(std::vector<float> wav);
@@ -524,10 +539,10 @@ class KWS : public AIBase
         * @return None
         */
         std::string post_process();
-        
+
         static wenet::FeaturePipelineConfig feature_config; // 音频预处理类
         static wenet::FeaturePipeline feature_pipeline;     // 音频预处理类
-        
+
 
     private:
         int num_bin = 40;                     // 音频特征维度
@@ -545,7 +560,9 @@ class KWS : public AIBase
 };
 #endif
 ```
+
 上述代码是实现实时关键词唤醒任务的类定义，主要定义关键词唤醒模型推理的前处理、推理、后处理接口。
+
 ```cpp
 void print_usage(const char *name)
 {
@@ -582,9 +599,10 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-
 ```
+
 上述代码是main.cc的一部分，主要实现参数解析功能。
+
 ```cpp
     bool enable_audio_input = true;
     bool enable_audio_output = true;
@@ -596,17 +614,19 @@ int main(int argc, char *argv[])
         std::cout << "start_aio_stream failed\n" << std::endl;
     }
 ```
+
 上述代码是main.cc中开启音频流的代码，k230录音的必备动作。
+
 ```cpp
 while (!audio_stop)
     {
         ScopedTiming st("total time", 1);
-        
+
         // 获取音频流数据
         auto pcm_chunk = get_audio_chunk();
         k_u16 *pcm_data = pcm_chunk.first;
         k_u32  pcm_size = pcm_chunk.second;
-        
+
         // 将PCM数据由uint16 -> int16_t -> float, 以满足PCM数据处理接口的输入要求
         float* data_;
         data_ = new float[pcm_size];
@@ -616,7 +636,7 @@ while (!audio_stop)
             data_[i] = static_cast<float>(sample);
         }
         std::vector<float> wav(data_, data_+pcm_size);
-    
+
         std::cout << "=============================================" << std::endl;
 
         // 将音频流PCM数据处理为音频Fbank特征
@@ -644,15 +664,18 @@ while (!audio_stop)
                 std::cout << "play_wav failed\n" << std::endl;
             }
         }
-        
+
     }
 ```
+
 上述代码是main.cc中对音频流进行实时关键词检测的过程。
 
+#### ```k230_code/k230_deploy/CMakeLists.txt```脚本说明
 
-#### ```k230_code/kws_stream/CMakeLists.txt```脚本说明
+配置编译文件和需要的头文件，同时链接编译使用的库。
+
 ```cmake
-set(src main.cc kws.cc fft.cc feature_pipeline.cc ai_base.cc utils.cc pcm_data.cc wav_ctrl.cc)
+set(src main.cc kws.cc fft.cc feature_pipeline.cc ai_base.cc pcm_data.cc wav_ctrl.cc)
 set(bin kws_stream.elf)
 
 include_directories(${PROJECT_SOURCE_DIR})
@@ -672,29 +695,11 @@ target_link_libraries(${bin} -Wl,--start-group rvv Nncase.Runtime.Native nncase.
 target_link_libraries(${bin} opencv_imgcodecs opencv_imgproc opencv_core zlib libjpeg-turbo libopenjp2 libpng libtiff libwebp csi_cv)
 install(TARGETS ${bin} DESTINATION bin)
 ```
-这是```k230_code/kws_stream```目录下的CMakeLists.txt脚本，设置编译的C++文件和生成的elf可执行文件名称，由下面：
-```shell
-set(src main.cc kws.cc fft.cc feature_pipeline.cc ai_base.cc utils.cc pcm_data.cc wav_ctrl.cc)
-set(bin kws_stream.elf)
-```
-```shell
-● include_directories(${PROJECT_SOURCE_DIR})：添加项目的根目录到头文件搜索路径中。
-● include_directories(${nncase_sdk_root}/riscv64/rvvlib/include)：添加 nncase RISC-V 向量库的头文件目录。
-● include_directories(${k230_sdk}/src/big/mpp/userapps/api/)：添加 k230 SDK 中的用户应用程序 API 头文件目录。
-● include_directories(${k230_sdk}/src/big/mpp/include)：添加 k230 SDK 的一般头文件目录。
-● include_directories(${k230_sdk}/src/big/mpp/include/comm)：添加与通信相关的头文件目录。
-● include_directories(${k230_sdk}/src/big/mpp/userapps/sample/sample_audio): 添加示例aio（音频输入输出）应用程序头文件目录。
-● include_directories(${k230_sdk}/src/big/mpp/userapps/sample/sample_vo)：添加示例 VO（视频输出）应用程序头文件目录。
-```
-```cmake
-link_directories(${nncase_sdk_root}/riscv64/rvvlib/): 添加链接器搜索路径，指向 nncase RISC-V 向量库的目录。
-add_executable(${bin} ${src}): 创建一个可执行文件，将之前设置的源文件列表作为输入。
-target_link_libraries(${bin} ...)：设置可执行文件需要链接的库。列表中列出了各种库，包括 nncase 相关的库、k230 SDK 的库，以及其他一些库。
-target_link_libraries(${bin} opencv_imgproc opencv_imgcodecs opencv_core zlib libjpeg-turbo libopenjp2 libpng libtiff libwebp csi_cv): 将一些 OpenCV 相关的库和其他一些库链接到可执行文件中。
-install(TARGETS ${bin} DESTINATION bin): 安装生成的可执行文件到指定的目标路径（bin 目录）中。
-```
-上述是```k230_code/k230_deploy```目录下的CMakeLists.txt脚本说明。
+
 #### k230_code/CMakeLists.txt脚本说明
+
+配置共用项目使用的头文件和链接库。
+
 ```cmake
 cmake_minimum_required(VERSION 3.2)
 project(nncase_sdk C CXX)
@@ -719,22 +724,13 @@ link_directories(${nncase_sdk_root}/riscv64/nncase/lib/)
 
 add_subdirectory(k230_deploy)
 ```
-这是k230_code目录下的CMakeLists.txt脚本。该脚本重点关注如下部分
-```cmake
-set(nncase_sdk_root "${PROJECT_SOURCE_DIR}/../../nncase/"):设置nncase目录
-set(k230_sdk ${nncase_sdk_root}/../../../):设置k230_sdk的目录，当前是从nncase目录的三级父目录得到
-set(CMAKE_EXE_LINKER_FLAGS "-T ${PROJECT_SOURCE_DIR}/cmake/link.lds --static"):设置链接脚本路径，链接脚本放于k230_code/cmake下
-...
-add_subdirectory(k230_deploy): 添加待编译的工程子目录，如您要编译自己的工程，可以更换该行
-```
-以上是k230_code目录下的CMakeLists.txt脚本说明。
+
 #### k230_code/build_app.sh脚本说明
+
 ```shell
 #!/bin/bash
 set -x
-
 # set cross build toolchain
-# 将交叉编译工具链的路径添加到系统的 PATH 环境变量中，以便在后续的命令中使用。该工具链是使用的大核编译工具链。
 export PATH=$PATH:/opt/toolchain/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/
 
 clear
@@ -749,7 +745,6 @@ cmake -DCMAKE_BUILD_TYPE=Release                 \
 make -j && make install
 popd
 
-# 生成的main.elf可以在k230_code目录下的k230_bin文件夹下找到
 k230_bin=`pwd`/k230_bin
 rm -rf ${k230_bin}
 mkdir -p ${k230_bin}
@@ -758,10 +753,10 @@ if [ -f out/bin/kws_stream.elf ]; then
       cp out/bin/kws_stream.elf ${k230_bin}
 fi
 ```
-### AI代码编译
-将项目中的k230_code文件夹拷贝到k230_sdk目录下的src/big/nncase下，执行编译脚本，将C++代码编译成main.elf可执行文件。K230现有两种开发板，两种开发板编译命令不同，请注意区分。
 
-#### CANMV-K230开发板
+### AI代码编译
+
+将项目中的k230_code文件夹拷贝到k230_sdk目录下的src/big/nncase下，执行编译脚本，将C++代码编译成main.elf可执行文件。
 
 如果编译可以在CANMV-K230开发板执行的elf文件：
 
@@ -771,19 +766,6 @@ make CONF=k230_canmv_defconfig prepare_memory
 # 回到当前项目目录下
 ./build_app.sh
 ```
-
-#### K230-EVB开发板
-
-如果编译可以在K230-EVB开发板执行的elf文件：
-
-```shell
-# 在k230_SDK根目录下执行
-make CONF=k230_evb_defconfig prepare_memory
-# 回到当前项目目录下
-./build_app.sh
-```
-
-
 
 若权限不够，可使用如下代码赋予相关权限：
 
@@ -805,7 +787,9 @@ kws
 ├──avg_10.kmodel # 训练得到的kmodel
 ├──kws_stream.elf # 编译的可执行文件
 ```
+
 ### 模型板上运行
+
 在大核COM口界面执行main.elf实现关键词唤醒：
 
 ```shell

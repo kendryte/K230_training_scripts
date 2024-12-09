@@ -132,10 +132,33 @@ void video_proc_ob_det(config_args args, char *argv[])
 
         {
             ScopedTiming st("osd draw", atoi(argv[4]));
-            Utils::draw_ob_det_res(osd_frame, results, {osd_width, osd_height}, {SENSOR_WIDTH, SENSOR_HEIGHT});
+
+            #if defined(CONFIG_BOARD_K230_CANMV_01STUDIO) 
+            {   
+                #if defined(STUDIO_HDMI)
+                {
+                Utils::draw_ob_det_res(osd_frame, results, {osd_width, osd_height}, {SENSOR_WIDTH, SENSOR_HEIGHT});
+                }
+                #else
+                {
+                cv::rotate(osd_frame, osd_frame, cv::ROTATE_90_COUNTERCLOCKWISE);
+                Utils::draw_ob_det_res(osd_frame, results, {osd_height, osd_width}, {SENSOR_WIDTH, SENSOR_HEIGHT});
+                cv::rotate(osd_frame, osd_frame, cv::ROTATE_90_CLOCKWISE);
+                }
+                #endif
+            }
+            #elif defined(CONFIG_BOARD_K230D_CANMV) || defined(CONFIG_BOARD_K230_CANMV_V3P0)
+            {
+                cv::rotate(osd_frame, osd_frame, cv::ROTATE_90_COUNTERCLOCKWISE);
+                Utils::draw_ob_det_res(osd_frame, results, {osd_height, osd_width}, {SENSOR_WIDTH, SENSOR_HEIGHT});
+                cv::rotate(osd_frame, osd_frame, cv::ROTATE_90_CLOCKWISE);
+            }
+            #else
+            {
+                Utils::draw_ob_det_res(osd_frame, results, {osd_width, osd_height}, {SENSOR_WIDTH, SENSOR_HEIGHT});
+            }
+            #endif
         }
-
-
         {
             ScopedTiming st("osd copy", atoi(argv[4]));
             memcpy(pic_vaddr, osd_frame.data, osd_width * osd_height * 4);

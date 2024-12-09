@@ -151,7 +151,7 @@ def read_txt_as_list(filepath):
 
 if __name__ == "__main__":
     to_kmodel('../checkpoints/best.onnx',
-              '../checkpoints/best.kmodel', [512, 416],
+              '../checkpoints/best.kmodel', [640, 640],
               [0.485, 0.456, 0.406], [0.229, 0.224, 0.225], [0, 1], samples_json_path='../gen/samples.json',
               tmp_path='../tmp', ptq_option=0,
               target='k230')
