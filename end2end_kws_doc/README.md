@@ -142,6 +142,24 @@ mkdir wav_from_k230/xiaonanxiaonan
 scp wav_from_k230/* your_user_name@your_IP:/path/to/wav_from_k230
 ```
 
+最后得到的`wav_from_k230`目录如下：
+
+```shell
+|-wav_from_k230
+|    |-xiaonanxiaonan
+|    |    |-xiaonan_1.wav
+|    |    |-xiaonan_2.wav
+|    |    |-xiaonan_3.wav
+|    |    |-...
+|    |-xiaonantongxue
+|    |    |-xiaonan_1.wav
+|    |    |-xiaonan_2.wav
+|    |    |-xiaonan_3.wav
+|    |    |-...
+```
+
+> 注意：如果仅有一个关键词，同样需要创建对应关键词的子目录。
+
 上述步骤i， ii， iii在大核执行，步骤iv在小核执行，负责将板子上录制的音频发送到开发者自己的服务器以用于模型训练。其中iii重复执行多次并修改保存的wav名称则可以录制多条wav音频。每一个wav音频的长度为15s
 ，录制者可以在15s内重复多次唤醒词，后续可以根据项目脚本分割为多个含有单个唤醒词的样本。
 录制的样本示例可以参考```./resource/xiaonan.wav```
